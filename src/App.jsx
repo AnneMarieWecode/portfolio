@@ -101,8 +101,9 @@ function App() {
                   Contact
                 </a>
                 <a
-                  href="/public/AnneMarieCV.pdf"
+                  href="https://drive.google.com/file/d/1UpVp7hB6UwbqccS8Tu64d1jsjZVkOW8C/view?usp=drive_link"
                   download
+                  target="_blank"
                   className="flex items-center px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-lg hover:bg-pink-50 transition-colors"
                 >
                   <Download className="h-5 w-5 mr-2" />
