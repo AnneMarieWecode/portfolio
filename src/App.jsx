@@ -1,121 +1,282 @@
-import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin, FaBlog, FaDownload } from "react-icons/fa";
-import { SiJavascript, SiReact, SiTailwindcss, SiNodedotjs, SiPython } from "react-icons/si";
+import React, { useState } from 'react';
+import logo from './assets/logo.jpg'; 
+import { Github, Mail, Phone, MapPin, Calendar, Code2, Briefcase, GraduationCap, ChevronRight, Moon, Sun, Languages, Download, User, AlignCenterVertical as Certificate, FolderGit2 } from 'lucide-react';
 
-export default function AboutMe() {
-  const [isVisible, setIsVisible] = useState(false);
+function App() {
+  const [isDark, setIsDark] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(false);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const translations = {
+    fr: {
+      about: "À Propos",
+      skills: "Compétences",
+      projects: "Projets",
+      certifications: "Certifications",
+      contact: "Contact",
+      downloadCV: "Télécharger CV",
+      intro: "Développeuse Web Full Stack",
+      motivation: "Passionnée par le développement web et l'innovation technologique, je suis une développeuse Full Stack créative et déterminée. Mon parcours académique et mes formations spécialisées m'ont permis de développer une expertise solide dans la création d'applications web modernes et performantes. Je suis constamment à la recherche de nouveaux défis pour enrichir mes compétences et créer des solutions numériques innovantes.",
+      aboutMe: "À Propos de Moi",
+      aboutText: "Développeuse Full Stack basée en Côte d'Ivoire, je combine créativité et expertise technique pour donner vie à des projets web exceptionnels. Diplômée en développement d'applications et certifiée en JavaScript, je suis passionnée par la création d'expériences utilisateur innovantes et intuitives.",
+    },
+    en: {
+      about: "About",
+      skills: "Skills",
+      projects: "Projects",
+      certifications: "Certifications",
+      contact: "Contact",
+      downloadCV: "Download CV",
+      intro: "Full Stack Web Developer",
+      motivation: "Passionate about web development and technological innovation, I am a creative and determined Full Stack developer. My academic background and specialized training have allowed me to develop solid expertise in creating modern and performant web applications. I am constantly seeking new challenges to enrich my skills and create innovative digital solutions.",
+      aboutMe: "About Me",
+      aboutText: "Full Stack Developer based in Ivory Coast, I combine creativity and technical expertise to bring exceptional web projects to life. With a degree in application development and certified in JavaScript, I am passionate about creating innovative and intuitive user experiences.",
+    }
+  };
 
-  const skills = [
-    { name: "JavaScript", level: "Expert", icon: <SiJavascript />, color: "bg-yellow-400" },
-    { name: "React", level: "Expert", icon: <SiReact />, color: "bg-blue-400" },
-    { name: "Tailwind CSS", level: "Advanced", icon: <SiTailwindcss />, color: "bg-teal-400" },
-    { name: "Node.js", level: "Intermediate", icon: <SiNodedotjs />, color: "bg-green-400" },
-    { name: "Python", level: "Advanced", icon: <SiPython />, color: "bg-yellow-300" }
-  ];
+  const t = isEnglish ? translations.en : translations.fr;
 
-  const achievements = [
-    { year: "2023", title: "Led successful product launch", description: "Managed team of 10 developers" },
-    { year: "2022", title: "Best Developer Award", description: "Recognition for technical excellence" },
-    { year: "2021", title: "Open Source Contributor", description: "Major contributions to React ecosystem" }
+  const navItems = [
+    { label: t.about, icon: User },
+    { label: t.certifications, icon: Certificate },
+    { label: t.projects, icon: FolderGit2 },
+    { label: t.contact, icon: Mail },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-16 px-4 sm:px-6 lg:px-8">
-      <div className={`max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
-          <div className="lg:col-span-5 space-y-10">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-              <img
-                src="https://plus.unsplash.com/premium_photo-1682050733502-f58b7f499490?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8"
-                alt="Professional headshot"
-                className="relative rounded-2xl w-full object-cover aspect-square shadow-xl transition duration-300 group-hover:scale-[1.02]"
-                onError={(e) => {
-                  e.target.src = "https://images.unsplash.com/photo-1633332755192-727a05c4013d";
-                }}
-              />
+    <div className={`min-h-screen ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} transition-colors duration-300`}>
+      {/* Navigation */}
+      <nav className={`fixed w-full ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg z-50`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex items-center">
+              <Code2 className="h-8 w-8 text-pink-600" />
+              <span className="ml-2 text-xl font-bold">Anne Marie</span>
             </div>
-
-            <div className="flex justify-center space-x-8">
-              <a href="#" className="group relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
-                <FaGithub className="relative h-10 w-10 text-gray-700 hover:text-purple-600 transition-colors" />
-              </a>
-              <a href="#" className="group relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
-                <FaLinkedin className="relative h-10 w-10 text-gray-700 hover:text-purple-600 transition-colors" />
-              </a>
-              <a href="#" className="group relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
-                <FaBlog className="relative h-10 w-10 text-gray-700 hover:text-purple-600 transition-colors" />
-              </a>
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item, index) => (
+                <a
+                  key={index}
+                  href={`#${item.label.toLowerCase()}`}
+                  className="flex items-center text-sm font-medium hover:text-pink-600 transition-colors"
+                >
+                  <item.icon className="h-4 w-4 mr-1" />
+                  {item.label}
+                </a>
+              ))}
+            </div>
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setIsEnglish(!isEnglish)}
+                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+              >
+                <Languages className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+              >
+                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
             </div>
           </div>
+        </div>
+      </nav>
 
-          <div className="lg:col-span-7 space-y-10">
-            <div className="space-y-4">
-              <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-4">Agbonou Kossiwa Anne Marie</h1>
-              <h2 className="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">Senior Frontend Developer</h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                A passionate frontend developer with 8+ years of experience in building scalable web applications. Specialized in React ecosystem and modern JavaScript. Committed to creating seamless user experiences through clean, efficient code.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Technical Skills</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {skills.map((skill, index) => (
-                  <div
-                    key={index}
-                    className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                  >
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
-                    <div className="relative flex flex-col items-center space-y-4">
-                      <span className="text-4xl text-gray-700 dark:text-gray-200">{skill.icon}</span>
-                      <div className="text-center">
-                        <p className="font-bold text-lg text-gray-800 dark:text-white">{skill.name}</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">{skill.level}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+      {/* Hero Section */}
+      <div className="pt-24 pb-16 px-4 animate-fadeIn">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                Agbonou Kossiwa Anne Marie
+              </h1>
+              <h2 className="text-2xl md:text-3xl text-pink-600 mb-6">{t.intro}</h2>
+              <p className="text-lg mb-8">{t.motivation}</p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#contact"
+                  className="flex items-center px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors"
+                >
+                  <Mail className="h-5 w-5 mr-2" />
+                  Contact
+                </a>
+                <a
+                  href="/public/AnneMarieCV.pdf"
+                  download
+                  className="flex items-center px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-lg hover:bg-pink-50 transition-colors"
+                >
+                  <Download className="h-5 w-5 mr-2" />
+                  {t.downloadCV}
+                </a>
               </div>
             </div>
-
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Professional Highlights</h3>
-              <div className="space-y-6">
-                {achievements.map((achievement, index) => (
-                  <div key={index} className="group relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
-                    <div className="relative flex items-start space-x-6">
-                      <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{achievement.year}</div>
-                      <div>
-                        <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{achievement.title}</h4>
-                        <p className="text-gray-600 dark:text-gray-300">{achievement.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="md:w-1/2 mt-8 md:mt-0">
+              <img
+                src={logo}
+                alt="Professional headshot"
+                className="rounded-full w-64 h-64 object-cover mx-auto shadow-2xl animate-float"
+              />
             </div>
-
-            <button className="group relative w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
-              <span className="relative flex items-center space-x-2">
-                <FaDownload className="h-5 w-5" />
-                <span>Download Resume</span>
-              </span>
-            </button>
           </div>
         </div>
       </div>
+
+      {/* About Section */}
+      <section id="about" className={`py-16 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">{t.aboutMe}</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <p className="text-lg leading-relaxed">{t.aboutText}</p>
+              <div className="flex items-center space-x-2">
+                <Calendar className="h-5 w-5 text-pink-600" />
+                <span>04 Février 2001</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <MapPin className="h-5 w-5 text-pink-600" />
+                <span>Koumassi Divo, Côte d'Ivoire</span>
+              </div>
+            </div>
+            <div className="space-y-8">
+              <div className="flex items-start">
+                <GraduationCap className="h-8 w-8 text-pink-600 mt-1" />
+                <div className="ml-4">
+                  <h3 className="text-xl font-semibold">Licence en Développement d'Application (DAS)</h3>
+                  <p className="text-pink-600">Université Virtuelle de Côte d'Ivoire (UVCI) | 2024</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <GraduationCap className="h-8 w-8 text-pink-600 mt-1" />
+                <div className="ml-4">
+                  <h3 className="text-xl font-semibold">Baccalauréat</h3>
+                  <p className="text-pink-600">Lycée Municipal de Koumassi | 2021</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section id="certifications" className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">{t.certifications}</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg transform hover:scale-105 transition-all duration-300`}>
+              <Certificate className="h-12 w-12 text-pink-600 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Certification JavaScript</h3>
+              <p className="text-pink-600">NAN DIGITAL ACADEMY | 2023</p>
+            </div>
+            <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg transform hover:scale-105 transition-all duration-300`}>
+              <Briefcase className="h-12 w-12 text-pink-600 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Formation Full Stack</h3>
+              <p className="text-pink-600">WeCode</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className={`py-16 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">{t.skills}</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              'JavaScript', 'HTML/CSS', 'React.js', 'Vue.js',
+              'Node.js', 'PHP', 'Bootstrap', 'Tailwind CSS',
+              'Figma', 'API Integration', 'Git', 'SQL'
+            ].map((skill) => (
+              <div
+                key={skill}
+                className={`p-4 rounded-lg ${
+                  isDark ? 'bg-gray-700' : 'bg-white'
+                } shadow-lg transform hover:scale-105 transition-all duration-300 hover:shadow-pink-100`}
+              >
+                <p className="text-center font-semibold">{skill}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">{t.contact}</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
+              <div className="space-y-4">
+                <a
+                  href="mailto:annemarieagbonou@gmail.com"
+                  className="flex items-center text-lg hover:text-pink-600 transition-colors"
+                >
+                  <Mail className="h-6 w-6 mr-2" />
+                  annemarieagbonou@gmail.com
+                </a>
+                <div className="flex items-center text-lg">
+                  <Phone className="h-6 w-6 mr-2" />
+                  <div className="flex flex-col">
+                    <span>0172317983</span>
+                    <span>0769144813</span>
+                  </div>
+                </div>
+                <p className="flex items-center text-lg">
+                  <MapPin className="h-6 w-6 mr-2" />
+                  Koumassi Divo, Côte d'Ivoire
+                </p>
+                <a
+                  href="https://github.com/ANNEMARIE05"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-lg hover:text-pink-600 transition-colors"
+                >
+                  <Github className="h-6 w-6 mr-2" />
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <div className={`p-6 rounded-lg ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Nom</label>
+                  <input
+                    type="text"
+                    className={`w-full p-2 rounded-lg border ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Email</label>
+                  <input
+                    type="email"
+                    className={`w-full p-2 rounded-lg border ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Message</label>
+                  <textarea
+                    rows={4}
+                    className={`w-full p-2 rounded-lg border ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-2 px-4 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors"
+                >
+                  Envoyer
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className={`py-8 ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p>© 2024 Anne Marie Agbonou. Tous droits réservés.</p>
+        </div>
+      </footer>
     </div>
   );
-};
+}
 
+export default App;
