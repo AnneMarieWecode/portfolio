@@ -91,7 +91,7 @@ function App() {
       about: "À Propos",
       skills: "Compétences",
       projects: "Projets",
-      certifications: "Certifications",
+      Experience: "Experience",
       contact: "Contact",
       downloadCV: "Télécharger CV",
       intro: "Développeuse Web Full Stack",
@@ -110,7 +110,7 @@ function App() {
       about: "About",
       skills: "Skills",
       projects: "Projects",
-      certifications: "Certifications",
+      Experience: "Experience",
       contact: "Contact",
       downloadCV: "Download CV",
       intro: "Full Stack Web Developer",
@@ -133,40 +133,40 @@ function App() {
     { label: t.about, icon: User, id: "about" },
     { label: t.skills, icon: Code2, id: "skills" },
     { label: t.projects, icon: FolderGit2, id: "projects" },
-    { label: t.certifications, icon: Certificate, id: "certifications" },
+    { label: t.Experience, icon: Certificate, id: "Experience" },
     { label: t.contact, icon: Mail, id: "contact" },
   ];
 
   const projects = [
     {
-      title: "E-commerce Platform",
+      title: "Projet e-commerce my_shop",
       description: isEnglish 
-        ? "A full-stack e-commerce platform with user authentication, product management, and payment integration."
-        : "Une plateforme e-commerce full-stack avec authentification utilisateur, gestion de produits et intégration de paiement.",
-      image: "/api/placeholder/800/600",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveLink: "https://ecommerce-project.com",
-      codeLink: "https://github.com/ANNEMARIE05/ecommerce-project"
+        ? "Development of a responsive website with a secure authentication system, an admin interface (CRUD for users/products/categories), an advanced search engine, and adherence to UX/UI best practices."
+        : "Création d’un site responsive avec système d’authentification sécurisé, interface admin (CRUD utilisateurs/produits/catégories), moteur de recherche avancé, et bonnes pratiques UX/UI.",
+      image: "https://img.freepik.com/photos-premium/femme-papier-sacs-telephone_249974-882.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
+      tags: ["HTML", "Tailwind CSS", "PHP (POO)", "MySQL"],
+      liveLink: "",
+      codeLink: "https://github.com/AnneMarieWecode"
     },
     {
-      title: "Portfolio Website",
+      title: "Projet MVVM_TWP",
       description: isEnglish 
-        ? "A responsive portfolio website with dark mode toggle and multi-language support."
-        : "Un site web portfolio responsive avec mode sombre et support multilingue.",
-      image: "/api/placeholder/800/600",
-      tags: ["React", "Tailwind CSS", "Framer Motion"],
-      liveLink: "https://portfolio-project.com",
-      codeLink: "https://github.com/ANNEMARIE05/portfolio-project"
+        ? "Development of a Trello-inspired web application using Vue.js, connected to a WordPress API. Implemented full functionality for managing lists (categories), cards (posts), and comments."
+        : "Développement d’une application web inspirée de Trello avec Vue.js, connectée à une API WordPress. Mise en place des fonctionnalités complètes de gestion des listes (catégories), cartes (articles) et commentaires.",
+      image: "https://img.freepik.com/vecteurs-libre/illustration-du-concept-methode-kanban_114360-13016.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
+      tags: ["Vue.js", "WordPress", "REST API"],
+      liveLink: "",
+      codeLink: "https://github.com/AnneMarieWecode"
     },
     {
-      title: "Task Manager App",
+      title: "Projet Microservice Dashboard",
       description: isEnglish 
-        ? "A task management application with drag-and-drop functionality and category filtering."
-        : "Une application de gestion de tâches avec fonctionnalité de glisser-déposer et filtrage par catégorie.",
-      image: "/api/placeholder/800/600",
-      tags: ["Vue.js", "Vuex", "Firebase"],
-      liveLink: "https://task-manager-app.com",
-      codeLink: "https://github.com/ANNEMARIE05/task-manager"
+        ? "Developed a React-based dashboard with authentication, dynamic widget integration (Weather, RSS, etc.), automatic refresh, and deployment using Docker Compose."
+        : "Développement d’un Dashboard en React avec authentification, ajout de widgets dynamiques via services (Météo, RSS…), rafraîchissement auto, et déploiement avec Docker Compose.",
+      image: "https://img.freepik.com/photos-premium/gens-concoivent-sites-web-fond-transparent_53876-982834.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
+      tags: ["REACT js", "NewsApp API", "Meteo API", "Coctail API", "Bitcoin API"],
+      liveLink: "",
+      codeLink: "https://github.com/AnneMarieWecode"
     }
   ];
 
@@ -286,7 +286,7 @@ function App() {
                   Contact
                 </a>
                 <a
-                  href="https://drive.google.com/file/d/1UpVp7hB6UwbqccS8Tu64d1jsjZVkOW8C/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/19K-y48bQbb7Z2DbHkvQtpdjIQwowxx94/view?usp=sharing"
                   download
                   target="_blank"
                   rel="noopener noreferrer"
@@ -390,18 +390,18 @@ function App() {
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {[
-              { name: 'JavaScript', level: '90%' },
-              { name: 'HTML/CSS', level: '95%' },
-              { name: 'React.js', level: '85%' },
-              { name: 'Vue.js', level: '80%' },
-              { name: 'Node.js', level: '75%' },
-              { name: 'PHP', level: '70%' },
-              { name: 'Bootstrap', level: '90%' },
-              { name: 'Tailwind CSS', level: '85%' },
-              { name: 'Figma', level: '75%' },
-              { name: 'API Integration', level: '80%' },
-              { name: 'Git', level: '85%' },
-              { name: 'SQL', level: '75%' }
+              { name: 'JavaScript' },
+              { name: 'HTML/CSS' },
+              { name: 'React.js' },
+              { name: 'Vue.js' },
+              { name: 'Wordpress' },
+              { name: 'PHP' },
+              { name: 'Bootstrap' },
+              { name: 'Tailwind CSS' },
+              { name: 'Figma' },
+              { name: 'API Integration' },
+              { name: 'Git' },
+              { name: 'SQL' }
             ].map((skill, index) => (
               <div
                 key={skill.name}
@@ -409,13 +409,7 @@ function App() {
                 data-animation="fadeInUp"
               >
                 <p className="text-center font-semibold mb-2">{skill.name}</p>
-                <div className="w-full bg-gray-200 dark rounded-full h-2 mb-1">
-                  <div 
-                    className="bg-gradient-to-r from-pink-600 to-purple-600 h-2 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000"
-                    style={{ width: skill.level }}
-                  ></div>
-                </div>
-                <p className="text-xs text-right text-pink-600">{skill.level}</p>
+                
               </div>
             ))}
           </div>
@@ -509,39 +503,32 @@ function App() {
         </div>
       </section>
 
-      {/* Certifications with Improved Cards */}
-      <section id="certifications" className="py-20 relative z-10">
+      {/* Experience with Improved Cards */}
+      <section id="Experience" className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
-            <span className="text-pink-600">#</span> {t.certifications}
+            <span className="text-pink-600">#</span> {t.Experience}
           <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
-            {isEnglish ? "Professional certifications and achievements" : "Certifications professionnelles et réalisations"}
+            {isEnglish ? "Professional Experience and achievements" : "Experience professionnelles et réalisations"}
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: "JavaScript Certification",
-                issuer: "freeCodeCamp",
-                date: "2023",
-                image: "/api/placeholder/400/300",
-                link: "https://www.freecodecamp.org/certification/annemarie/javascript-algorithms-and-data-structures"
+                issuer: "NAN DIGITAL ACADEMY",
+                date: "2023 - 2024",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUZvdOF-AVHqrOFiryfOCftGlTB6U_nhv4yw&s",
+                link: ""
               },
               {
-                title: "React Development",
-                issuer: "Meta",
+                title: "Developpement fullstack",
+                issuer: "WeCode",
                 date: "2023",
-                image: "/api/placeholder/400/300",
-                link: "https://www.coursera.org/account/accomplishments/verify/ABCDEFG"
-              },
-              {
-                title: "Web Design Fundamentals",
-                issuer: "Google",
-                date: "2022",
-                image: "/api/placeholder/400/300",
-                link: "https://www.coursera.org/account/accomplishments/verify/HIJKLMN"
+                image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAulBMVEX///8AAAD///1ISEj7+/v///u6urr4+Pi9vb2lpaWNjY1+fn7b29utra3u7u4PDw9YWFjOzs7w8PCwsLCXl5fT09Pk5OQdHR2ioqKLi4tPT087OzsmJiZzc3PIyMhkZGQXFxdvb29AQEAuLi5PUP9YWPjb3fZUVf9KTP9eXvWamprs6/iFhfV8ffZ+fvG0su+Rkvmfn/Vxc/Pv8PlaW/hmZvhnafTZ2fjLzfS/wPVFRP+WlvGoq/KkpfQGfEhgAAAD+UlEQVR4nO3XaXfaOhCAYcssBhubfQ+EEieQ0GajNGl6+///1p2RbKBplnN625Db8z4fEqPYisYajYTnAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH+V6WQSHnoMVtDphIPsuhqGibuqhZ2w+/QD3bAxLkTl4LWOY2Pmv2mM/9GxMcbFFchV7Bonctl76u5awzj99iv9SoSF3znOX1eR4brRTuXq2DWaZyagYnail/t9PxG2ZnlckY7bZl9TLgZP3Nu1oY2iY/v75WX2fiL0PhhT1zQtnuiwK9o0zDO3lRT3b61L+8S+g6pcFH/qKlNMWnsRyqdn73wb0yyump2YiTYdGdOQ8MK+NHyobe+M93Kzsp1j/1F/NXll5uhi4CK0n/rDVwvTnxTUXVwdCUtG47lkjL1eP1tw5fzOuTEnj6ej5Pt+SfilrKGcPVW3EbazTydP1q23IoWzLu94JFM5NqZrYzU9DVzmQn/ksyiXnR8f9f3Vx0+fLoOr6+sbF3ttrxYV7II2fe1pfMhZ1DSdeonO39DWj7kmaeRqbDLfVoxevky3/NLqfLk8PSsF8uvWxjDSTE6KlZmNUH7Oaq5ydX76v2/ILq9Yw5Kh9O00tD3J0ShotYLmdhKT/YxVMoOnaXq6ljxdf14sN4Fv7xnq3/R1jDTdK9rJhUziIcuNTpfu/LEXSFb2pEaY1n62yQxb+egzfulMAjxf2cvV5zT9srb54JacrOlRe7+T1pvHtaPT1HQbhFS+6rHO5g8RZrkpg65vx5l4/t1putisslp6drpIN6tpvs/o6m7E7yVCXS5jt9ykEh7VNRk1yyZxVcTVQXZa1RNNI3tkYJreJl0s77MAff9KPn3pbmdcsnykDwxsH9LTQTeMoX3JWgsS9749WzLmunSCCxmaHwS6GxS07jeltae7XGd1ni6kzNgufJnDhWSsvJ6+LlvN/EIx30C78aFCy7jTmK0nWgvtKU7bjjqx7vpD7+syvZe2ZGZvnNs9RJathri4s3v+3SKVJC3pYUdOCdGJ2y103xkNqhJuvfLiCP604tjkxa663eMHu2VY2qTprbbVTnbrSrYSfy2Jmkqi+ncS6vlap7Oxu6PgvrlYs4Nu+S5N3XnMVhi3ZMp2zzf1qedfPjx8s23BMBtxw854aX27XD589e+X6XIju4Y0FSP3lMQ29tzpQYM9cIBeUi6XszHIVTNvrnSiC5tdwT9X+XZWrFxEYTurPbJAv998vzm7vPx4vc4PqL1qFEqpKpdtyWm1h9HgmW/T74gePp/+Q8nGpafTxydwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/D/8CxOQNZjcAUAYAAAAAElFTkSuQmCC",
+                link: ""
               }
             ].map((cert, index) => (
               <div 
@@ -645,23 +632,13 @@ function App() {
                     <Github className="h-6 w-6" />
                   </a>
                   <a 
-                    href="https://linkedin.com/in/anne-marie-agbonou" 
+                    href="https://www.linkedin.com/in/anne-marie-agbonou-ba31692a1/" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 bg-pink-100 text-pink-600 rounded-full hover:bg-pink-200 transition-colors transform hover:scale-110"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                  </a>
-                  <a 
-                    href="https://twitter.com/AnneMarie" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-pink-100 text-pink-600 rounded-full hover:bg-pink-200 transition-colors transform hover:scale-110"
-                  >
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                     </svg>
                   </a>
                 </div>
@@ -736,23 +713,13 @@ function App() {
                 <Github className="h-5 w-5" />
               </a>
               <a 
-                href="https://linkedin.com/in/anne-marie-agbonou" 
+                href="https://www.linkedin.com/in/anne-marie-agbonou-ba31692a1/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-pink-600 hover:text-pink-700 transition-colors"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-              <a 
-                href="https://twitter.com/AnneMarie" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-pink-600 hover:text-pink-700 transition-colors"
-              >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                 </svg>
               </a>
             </div>
