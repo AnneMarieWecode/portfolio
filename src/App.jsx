@@ -1,23 +1,55 @@
-import logo from './assets/logo.jpeg'; 
+import logo from './assets/logo.jpeg';
 import "./App.css"
 import { useState, useEffect, useRef } from 'react';
-import { 
-  Github, Mail, Phone, MapPin, Calendar, Code2, Briefcase, GraduationCap, 
-  ChevronRight, Moon, Sun, Languages, Download, User, AlignCenterVertical as Certificate, 
+import {
+  Github, Mail, Phone, MapPin, Calendar, Code2, Briefcase, GraduationCap,
+  ChevronRight, Languages, Download, User, AlignCenterVertical as Certificate,
   FolderGit2, ExternalLink, Eye, Menu, X, ArrowUp
 } from 'lucide-react';
+import { RiTailwindCssFill } from "react-icons/ri";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaGitAlt, FaCode, FaWordpress, FaVuejs, FaPhp, FaBootstrap, FaFigma } from 'react-icons/fa';
 
-// Simulation d'un logo importé
-const logoPlaceholder = "/api/placeholder/120/120";
 
 function App() {
   const [isEnglish, setIsEnglish] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
   const navRef = useRef(null);
+  
+  const skills = [
+    { name: 'JavaScript', value: 90, color: 'from-pink-500 to-purple-600' },
+    { name: 'HTML', value: 95, color: 'from-blue-500 to-teal-400' },
+    { name: 'CSS', value: 80, color: 'from-sky-500 to-blue-600' },
+    { name: 'react', value: 85, color: 'from-cyan-500 to-blue-600' },
+    { name: 'vuejs', value: 80, color: 'from-green-500 to-emerald-400' },
+    { name: 'wordpress', value: 75, color: 'from-blue-600 to-indigo-600' },
+    { name: 'php', value: 82, color: 'from-indigo-500 to-purple-500' },
+    { name: 'bootstrap', value: 88, color: 'from-purple-500 to-pink-500' },
+    { name: 'tailwindcss', value: 90, color: 'from-teal-400 to-cyan-500' },
+    { name: 'Figma', value: 78, color: 'from-rose-500 to-pink-600' },
+    { name: 'API', value: 85, color: 'from-amber-500 to-orange-600' },
+    { name: 'git', value: 87, color: 'from-red-500 to-rose-500' },
+  ];
 
+  function getSkillIcon(skillName) {
+    switch (skillName.toLowerCase()) {
+      case 'javascript': return <FaJs className="text-yellow-400" />;
+      case 'react': return <FaReact className="text-blue-400" />;
+      case 'vuejs': return <FaVuejs className="text-blue-500" />;
+      case 'wordpress': return <FaWordpress className="text-orange-500" />;
+      case 'php': return <FaPhp className="text-yellow-400" />;
+      case 'bootstrap': return <FaBootstrap className="text-blue-400" />;
+      case 'tailwindcss': return <RiTailwindCssFill className="text-teal-400" />;
+      case 'figma': return <FaFigma className="text-red-200" />;
+      case 'API': return <FaGitAlt className="text-green-500" />;
+      case 'git': return <FaGitAlt className="text-green-500" />;
+      case 'html': return <FaHtml5 className="text-red-200" />;
+      case 'css': return <FaCss3Alt className="text-blue-500" />;
+
+      default: return <FaCode className="text-gray-400" />;
+    }
+  }
   // Handle scroll for navbar transparency change
   useEffect(() => {
     const handleScroll = () => {
@@ -97,7 +129,7 @@ function App() {
       about: "À Propos",
       skills: "Compétences",
       projects: "Projets",
-      Experience: "Experience",
+      formation: "Formation",
       contact: "Contact",
       downloadCV: "Télécharger CV",
       intro: "Développeuse Web Full Stack",
@@ -116,7 +148,7 @@ function App() {
       about: "About",
       skills: "Skills",
       projects: "Projects",
-      Experience: "Experience",
+      formation: "Education",
       contact: "Contact",
       downloadCV: "Download CV",
       intro: "Full Stack Web Developer",
@@ -139,85 +171,71 @@ function App() {
     { label: t.about, icon: User, id: "about" },
     { label: t.skills, icon: Code2, id: "skills" },
     { label: t.projects, icon: FolderGit2, id: "projects" },
-    { label: t.Experience, icon: Certificate, id: "experience" },
+    { label: t.formation, icon: Certificate, id: "formation" },
     { label: t.contact, icon: Mail, id: "contact" },
   ];
 
   const projects = [
     {
       title: "Projet e-commerce my_shop",
-      description: isEnglish 
+      description: isEnglish
         ? "Development of a responsive website with a secure authentication system, an admin interface (CRUD for users/products/categories), an advanced search engine, and adherence to UX/UI best practices."
         : "Création d'un site responsive avec système d'authentification sécurisé, interface admin (CRUD utilisateurs/produits/catégories), moteur de recherche avancé, et bonnes pratiques UX/UI.",
-      image: "/api/placeholder/600/400",
+      image: "https://img.freepik.com/photos-premium/jeune-couple-smartphone-pres-du-centre-commercial_116547-37604.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
       tags: ["HTML", "Tailwind CSS", "PHP (POO)", "MySQL"],
       liveLink: "#",
       codeLink: "https://github.com/AnneMarieWecode"
     },
     {
       title: "Projet MVVM_TWP",
-      description: isEnglish 
+      description: isEnglish
         ? "Development of a Trello-inspired web application using Vue.js, connected to a WordPress API. Implemented full functionality for managing lists (categories), cards (posts), and comments."
         : "Développement d'une application web inspirée de Trello avec Vue.js, connectée à une API WordPress. Mise en place des fonctionnalités complètes de gestion des listes (catégories), cartes (articles) et commentaires.",
-      image: "/api/placeholder/600/400",
+      image: "https://img.freepik.com/vecteurs-libre/illustration-concept-abstrait-gestion-taches_335657-2127.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
       tags: ["Vue.js", "WordPress", "REST API"],
       liveLink: "#",
       codeLink: "https://github.com/AnneMarieWecode"
     },
     {
       title: "Projet Microservice Dashboard",
-      description: isEnglish 
+      description: isEnglish
         ? "Developed a React-based dashboard with authentication, dynamic widget integration (Weather, RSS, etc.), automatic refresh, and deployment using Docker Compose."
         : "Développement d'un Dashboard en React avec authentification, ajout de widgets dynamiques via services (Météo, RSS…), rafraîchissement auto, et déploiement avec Docker Compose.",
-      image: "/api/placeholder/600/400",
+      image: "https://img.freepik.com/vecteurs-libre/prendre-notes-concept-illustration_114360-1142.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
       tags: ["REACT js", "NewsApp API", "Meteo API", "Coctail API", "Bitcoin API"],
       liveLink: "#",
       codeLink: "https://github.com/AnneMarieWecode"
     }
   ];
 
-  const skills = [
-    { name: 'JavaScript', value: 90, color: 'from-pink-500 to-purple-600' },
-    { name: 'HTML/CSS', value: 95, color: 'from-blue-500 to-teal-400' },
-    { name: 'React.js', value: 85, color: 'from-cyan-500 to-blue-600' },
-    { name: 'Vue.js', value: 80, color: 'from-green-500 to-emerald-400' },
-    { name: 'Wordpress', value: 75, color: 'from-blue-600 to-indigo-600' },
-    { name: 'PHP', value: 82, color: 'from-indigo-500 to-purple-500' },
-    { name: 'Bootstrap', value: 88, color: 'from-purple-500 to-pink-500' },
-    { name: 'Tailwind CSS', value: 90, color: 'from-teal-400 to-cyan-500' },
-    { name: 'Figma', value: 78, color: 'from-rose-500 to-pink-600' },
-    { name: 'API Integration', value: 85, color: 'from-amber-500 to-orange-600' },
-    { name: 'Git', value: 87, color: 'from-red-500 to-rose-500' },
-    { name: 'SQL', value: 80, color: 'from-sky-500 to-blue-600' }
-  ];
+
 
   const experiences = [
     {
       title: "JavaScript Certification",
       issuer: "NAN DIGITAL ACADEMY",
       date: "2023 - 2024",
-      image: "/api/placeholder/400/300",
+      image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAATlBMVEXo6+13f/5xev/q7e3r7ux1ff5ze/6Ynvnt8OyWnfrT1/CTmvp4gP7g4+6Fjfx5gf3Y3PDl6O2Ah/2Divyxt/Zsdf+gp/jEyPOPl/vd4e8Hoi/UAAAHZUlEQVR4nN2d22KjOgxFkxoy6SWZdtp05vz/jx5IuQQQ4G1Lsmw9NwmrZmsF45jDQbWc+3JO9yN1yx1+3X4dCkZsAJ+OTwUjuqoBPDaIVaGI7vzaAjaIr+ciEZ17/gFsEJ9LbDf3DPZVYhadewBsEUsbRXd+fgRsT9Sysuiq1ylg225K6qiTDJaYRRKwJMRO9BRiGSfqIHoCsQj1P4ieQCxA/SsZLCeLM9FTiHmP4kL01ImacxYJ0ROIGat/J4P5Z9ETMF/EVdFTiDmeqBuiJxAzVP+m6AnE7NTvncHxRM0ri7uipxBzGkUP0ROIGanfS/QEYjbqhzM4IGaSxWDAXBAB0VOI9k9USPQEonn1g6InEI2rPyKDA6LpLAaInkK0O4pBoicQzao/UPQEolH1M2RwQDSZRUZAm4hRoqcQrZ2okaInEI2pP1r0BKIp9bNmcEA0lEUW0VOIVkYREz3yp0bUD4m+fvv7VvsjmlA/lMH698v55TeAaCCLKGB1qPJCBEXfAB4aROAVqdUPib4+vVf3V1XvJySLKdsNJPr67aXqXle9IO0mofrxDPaVSRYh0T+M4A8iMoqJ1I+J/jQBbBFP/i9Oo35M9Mf3avb66v1oW/3hGRwQbWcxHtA4YojoKUTgPXTVHyZ6AtGq+kNFTyDaVD9HBkdEg1mMET2FaE79caKnEI2pP1b0BKIt9XNmcEC0lEUJQFOIPKKnEIF3lVQ/l+gJRBvq5xM9gWhB/TIZHBGTZ5FX9BRiYvVzi55CTKp+ftETiCnVL5vBATFdFnUAEyJKiZ5CBD6HT/1yoicQU6hfUvQEor76tTI4IipnUVr0FKKq+uVFTyEqql9D9ASinvq1MzggamUxFaAaop7oKUTgk0PVryl6AlFe/bqiJxCl1Z8ugyOiaBb1RU8hCqpfTvQOSIyg+uVE7y7/LgCilPrlMugu16crgiiTRVHA0/GUHFFO9O7j2gbrdP1AEIFj8VO/nOjdx5+f8aj/IIjc6pcTvbt89odaf0InKqv6hTPYV7osyol+AggjsqlfUPQfn1N7nz6hdsOkfkHR903m4fVYu2FRv2gGlwdYq2dRqcmMpd1uxEVPIWqqX0H0xPsoql9F9MQ7qalfPYN9aWVRTfTRiIHqVxQ98XYK6lcVPfGO4upXFj3xnsJZTNZkxhJuN9hveDlETyHKqd8dvm7ef84leuKdxdR/+wLGkE/0xHsLqb8dQ+8cymSwL5ksQq2GV/TRiF6j2H+v8fMhs+iJD2BX/3gp7PGdhl/0xGcwq/9xOmP3e6mE6IlPYc3idEpqJ4uyTWYsznYzv87fuT6UET2FyKX+5dTwxjW+nOiJz2JSPzW9vzpPIyl64tNY1E/folnJolYG++LIIjSdKC36aERiFNfvXVDqFxc9gRip/q3b3Qv1a4h+WXHq316yMFO/jugJxIgs7i07mWRRu8mMFd5u9u/lT9SvJXoKMUz9Psu/BvVrin5ZYer3W8LXqV9X9ARigPp9l2Hes5gug33hWcSWDKmLPhrxDVmf2LQbKdHXN//TGVQ/tsYUWOcHNZnT9T9gvKF2484AH1KQ6JsT74yc0pD65QD9D/ieLPwVaQER0XcCgNQCqV8EMGTqXm7Cnx8wcDRCRj4RYGiiMskidJizroh24CSImOjnacIsiqifETDuEOP+QRqA0adZzEmuAxjdKky3G552b1j9XMo2q36+/71R9XPmx2QWeXugQfVze8yc+vkPyJj6JU4qU+qXaQyG2g323/Zv7qB+BBHP38AyP2ieDEn37VtqVq09Eu9lfuCXLED97WI8ufJe5gefSt4BMLK9Z0DH8+zS8nsJey3zC7KWVxY1tp/3WOYX+M3DQ/06jxDYXeYX3M53s6j1GIidLEb4agdRb2/9zWV+UVdxm+rXfBzL1jK/uK/GG+1G95E6q8v8omdTVtWv/ViklSwyfGdcyaKRR3iwXNqQ6k/xvCBC/UyXp0QW0zxibqF+timGhfpTPSZwpn7G67ZZFtM96nGSRdYL0wliyufnPaifebr2Qf1pH7k6LvPjngMb2k3qx+Z26he4bdKpP/XzD7ssikwO3bOY/hmWd8SbzOxXg3gzANi2m28A0AEnnbt8G3kiMLRRYA1tQRhyOEmrXcsrs42kkbqv5BXZCtRIdauxyx3FYUU9+5a8Rmryg8gSR3Hyy5YSszj7dVJ5iItfmLFtUW+kqA0CeB4zYKTIX3qWJI2VX+uWk8XVX1yXMoobv5ovQ/07mx7lP4o7u1fkn8XdHUhyR/TYRSZv9fttApix+j13c8pXGt47cuWaRee/q1ozijbm1LBCtgx9es5vVu2ALPOTXYwnV97L/CxM3YeVJ2K+gJ7L/NLco+cqj2V+qe7Rc9XuMr909+i5aieLOWewr81lfmnv0XPVxjK/1PfouWp1mV/6e/RctZLFEjLYF4lYEiCp/rxFv6yF+nMX/bJm6s9f9MuaZLGsDPb1oP4yRL+sQf2liH5ZnfrLEf2y7lksM4N9tcv8igZs282XdpP5H+viiE2OthuvAAAAAElFTkSuQmCC",
       link: "#"
     },
     {
       title: "Developpement fullstack",
       issuer: "WeCode",
-      date: "2023",
-      image: "/api/placeholder/400/300",
+      date: "2024 - 2025",
+      image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAulBMVEX///8AAAD///1ISEj7+/v///u6urr4+Pi9vb2lpaWNjY1+fn7b29utra3u7u4PDw9YWFjOzs7w8PCwsLCXl5fT09Pk5OQdHR2ioqKLi4tPT087OzsmJiZzc3PIyMhkZGQXFxdvb29AQEAuLi5PUP9YWPjb3fZUVf9KTP9eXvWamprs6/iFhfV8ffZ+fvG0su+Rkvmfn/Vxc/Pv8PlaW/hmZvhnafTZ2fjLzfS/wPVFRP+WlvGoq/KkpfQGfEhgAAAD+UlEQVR4nO3XaXfaOhCAYcssBhubfQ+EEieQ0GajNGl6+///1p2RbKBplnN625Db8z4fEqPYisYajYTnAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH+V6WQSHnoMVtDphIPsuhqGibuqhZ2w+/QD3bAxLkTl4LWOY2Pmv2mM/9GxMcbFFchV7Bonctl76u5awzj99iv9SoSF3znOX1eR4brRTuXq2DWaZyagYnail/t9PxG2ZnlckY7bZl9TLgZP3Nu1oY2iY/v75WX2fiL0PhhT1zQtnuiwK9o0zDO3lRT3b61L+8S+g6pcFH/qKlNMWnsRyqdn73wb0yyump2YiTYdGdOQ8MK+NHyobe+M93Kzsp1j/1F/NXll5uhi4CK0n/rDVwvTnxTUXVwdCUtG47lkjL1eP1tw5fzOuTEnj6ej5Pt+SfilrKGcPVW3EbazTydP1q23IoWzLu94JFM5NqZrYzU9DVzmQn/ksyiXnR8f9f3Vx0+fLoOr6+sbF3ttrxYV7II2fe1pfMhZ1DSdeonO39DWj7kmaeRqbDLfVoxevky3/NLqfLk8PSsF8uvWxjDSTE6KlZmNUH7Oaq5ydX76v2/ILq9Yw5Kh9O00tD3J0ShotYLmdhKT/YxVMoOnaXq6ljxdf14sN4Fv7xnq3/R1jDTdK9rJhUziIcuNTpfu/LEXSFb2pEaY1n62yQxb+egzfulMAjxf2cvV5zT9srb54JacrOlRe7+T1pvHtaPT1HQbhFS+6rHO5g8RZrkpg65vx5l4/t1putisslp6drpIN6tpvs/o6m7E7yVCXS5jt9ykEh7VNRk1yyZxVcTVQXZa1RNNI3tkYJreJl0s77MAff9KPn3pbmdcsnykDwxsH9LTQTeMoX3JWgsS9749WzLmunSCCxmaHwS6GxS07jeltae7XGd1ni6kzNgufJnDhWSsvJ6+LlvN/EIx30C78aFCy7jTmK0nWgvtKU7bjjqx7vpD7+syvZe2ZGZvnNs9RJathri4s3v+3SKVJC3pYUdOCdGJ2y103xkNqhJuvfLiCP604tjkxa663eMHu2VY2qTprbbVTnbrSrYSfy2Jmkqi+ncS6vlap7Oxu6PgvrlYs4Nu+S5N3XnMVhi3ZMp2zzf1qedfPjx8s23BMBtxw854aX27XD589e+X6XIju4Y0FSP3lMQ29tzpQYM9cIBeUi6XszHIVTNvrnSiC5tdwT9X+XZWrFxEYTurPbJAv998vzm7vPx4vc4PqL1qFEqpKpdtyWm1h9HgmW/T74gePp/+Q8nGpafTxydwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/D/8CxOQNZjcAUAYAAAAAElFTkSuQmCC",
       link: "#"
     }
   ];
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} transition-colors duration-500`}>
+    <div className="min-h-screen bg-gray-900 text-white transition-colors duration-500">
       {/* Navigation */}
-      <nav 
+      <nav
         ref={navRef}
-        className={`fixed w-full z-50 transition-all duration-500 ${
-          scrolled 
-            ? `${darkMode ? 'bg-gray-900/90' : 'bg-white/90'} shadow-lg backdrop-blur-lg py-2` 
-            : `bg-transparent py-6`
-        }`}
+        className={`fixed w-full z-50 transition-all duration-500 ${scrolled
+          ? "bg-gray-900/90 shadow-lg backdrop-blur-lg py-2"
+          : "bg-transparent py-6"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
@@ -225,9 +243,7 @@ function App() {
               <div className={`h-10 w-10 rounded-lg overflow-hidden bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center transition-all duration-500 ${scrolled ? 'rotate-12' : 'rotate-0'}`}>
                 <Code2 className="h-6 w-6 text-white" />
               </div>
-              <span className={`ml-3 text-xl font-extrabold tracking-tighter ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              } ${scrolled ? 'opacity-100' : ''}`}>
+              <span className={`ml-3 text-xl font-extrabold tracking-tighter text-white ${scrolled ? 'opacity-100' : ''}`}>
                 Anne Marie
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 ml-1">.dev</span>
               </span>
@@ -239,11 +255,10 @@ function App() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className={`flex items-center text-sm font-medium transition-all duration-300 hover:text-pink-600 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-pink-600 after:transition-all after:duration-300 ${
-                    activeSection === item.id 
-                      ? 'text-pink-600 after:w-full' 
-                      : 'after:w-0 hover:after:w-full'
-                  }`}
+                  className={`flex items-center text-sm font-medium transition-all duration-300 hover:text-pink-600 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-pink-600 after:transition-all after:duration-300 ${activeSection === item.id
+                    ? 'text-pink-600 after:w-full'
+                    : 'after:w-0 hover:after:w-full'
+                    }`}
                 >
                   <item.icon className="h-4 w-4 mr-2" />
                   {item.label}
@@ -254,29 +269,15 @@ function App() {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setIsEnglish(!isEnglish)}
-                className={`p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ${
-                  darkMode ? 'text-white' : 'text-gray-900'
-                }`}
+                className="p-2 rounded-full hover:bg-gray-700 transition-colors duration-300 text-white"
                 aria-label={isEnglish ? "Switch to French" : "Switch to English"}
               >
                 <Languages className="h-5 w-5" />
               </button>
-              
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className={`p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ${
-                  darkMode ? 'text-white' : 'text-gray-900'
-                }`}
-                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </button>
-              
+
               {/* Mobile Menu Button */}
-              <button 
-                className={`md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ${
-                  darkMode ? 'text-white' : 'text-gray-900'
-                }`}
+              <button
+                className="md:hidden p-2 rounded-full hover:bg-gray-700 transition-colors duration-300 text-white"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
               >
@@ -287,22 +288,20 @@ function App() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden absolute w-full top-full left-0 transition-all duration-500 overflow-hidden ${
-          isMenuOpen 
-            ? 'max-h-96 opacity-100' 
-            : 'max-h-0 opacity-0'
-        }`}>
-          <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg rounded-b-2xl mx-4`}>
+        <div className={`md:hidden absolute w-full top-full left-0 transition-all duration-500 overflow-hidden ${isMenuOpen
+          ? 'max-h-96 opacity-100'
+          : 'max-h-0 opacity-0'
+          }`}>
+          <div className="bg-gray-800 shadow-lg rounded-b-2xl mx-4">
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => handleNavItemClick(item.id)}
-                className={`flex items-center space-x-3 px-5 py-4 text-lg ${darkMode ? 'border-gray-700' : 'border-gray-200'} border-b ${
-                  activeSection === item.id 
-                    ? `text-pink-600 ${darkMode ? 'bg-gray-700/30' : 'bg-pink-50'}` 
-                    : ''
-                }`}
+                className={`flex items-center space-x-3 px-5 py-4 text-lg border-gray-700 border-b ${activeSection === item.id
+                  ? 'text-pink-600 bg-gray-700/30'
+                  : ''
+                  }`}
               >
                 <item.icon className="h-5 w-5" />
                 <span>{item.label}</span>
@@ -314,17 +313,15 @@ function App() {
       </nav>
 
       {/* Hero Section with Parallax Effect */}
-      <section id="hero" className={`min-h-screen flex items-center pt-24 pb-16 px-4 overflow-hidden relative ${
-        darkMode ? '' : 'bg-gradient-to-b from-gray-50 to-gray-100'
-      }`}>
+      <section id="hero" className="min-h-screen flex items-center pt-24 pb-16 px-4 overflow-hidden relative">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-20 right-10 w-60 h-60 bg-pink-400 opacity-10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 left-10 w-80 h-80 bg-purple-400 opacity-10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-blue-400 opacity-10 rounded-full blur-3xl animate-pulse"></div>
-          
+
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="md:w-1/2 space-y-6">
@@ -334,16 +331,16 @@ function App() {
                   {isEnglish ? "Welcome to my portfolio" : "Bienvenue sur mon portfolio"}
                 </span>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold mb-4 relative">
-                <span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>Agbonou Kossiwa</span>
+                <span className="text-white">Agbonou Kossiwa</span>
                 <div className="overflow-hidden inline-block ml-3">
                   <span className="bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text inline-block animate-gradient-x">
                     Anne Marie
                   </span>
                 </div>
               </h1>
-              
+
               <div className="h-10 overflow-hidden relative">
                 <h2 className="text-2xl md:text-3xl font-light absolute animate-slide-up">
                   <span className="flex items-center">
@@ -352,9 +349,9 @@ function App() {
                   </span>
                 </h2>
               </div>
-              
+
               <p className="text-lg mb-8 opacity-90 max-w-lg leading-relaxed">{t.motivation}</p>
-              
+
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#contact"
@@ -368,46 +365,44 @@ function App() {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group flex items-center px-6 py-3 border-2 border-pink-600 rounded-lg ${
-                    darkMode ? 'text-pink-600 hover:bg-gray-800' : 'text-pink-600 hover:bg-pink-50'
-                  } transition-all duration-300 transform hover:-translate-y-1`}
+                  className="group flex items-center px-6 py-3 border-2 border-pink-600 rounded-lg text-pink-600 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <Download className="h-5 w-5 mr-2 group-hover:animate-bounce" />
                   {t.downloadCV}
                 </a>
               </div>
             </div>
-            
+
             <div className="md:w-1/2 flex justify-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full blur-xl opacity-30 animate-pulse"></div>
-                
+
                 {/* Floating Elements */}
                 <div className="absolute -top-10 -left-10 w-16 h-16 bg-blue-400 rounded-lg opacity-20 animate-float" style={{ animationDelay: '0s' }}></div>
                 <div className="absolute -bottom-5 -right-5 w-12 h-12 bg-pink-400 rounded-full opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
                 <div className="absolute top-1/2 -right-8 w-8 h-8 bg-purple-400 rounded-lg opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
-                
+
                 <div className="relative rounded-full w-64 h-64 p-2 bg-gradient-to-br from-pink-500 to-purple-600">
                   <div className="absolute inset-0 rounded-full animate-spin-slow">
                     {Array.from({ length: 12 }).map((_, i) => (
-                      <div 
-                        key={i} 
-                        className="absolute w-3 h-3 bg-white rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+                      <div
+                        key={i}
+                        className="absolute w-3 h-3 bg-white rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
                         style={{ transform: `rotate(${i * 30}deg) translateY(-32px) translateX(-50%)` }}
                       ></div>
                     ))}
                   </div>
-                  
+
                   <img
                     src={logo}
                     alt="Professional headshot"
-                    className="rounded-full w-full h-full object-cover border-4 border-white dark:border-gray-800 z-10"
+                    className="rounded-full w-full h-full object-cover border-4 border-gray-800 z-10"
                   />
                 </div>
               </div>
             </div>
           </div>
-          
+
           {/* Scroll down indicator */}
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
             <div className="w-6 h-10 rounded-full border-2 border-pink-600 flex justify-center relative overflow-hidden">
@@ -418,33 +413,29 @@ function App() {
       </section>
 
       {/* About Section with Card Layout */}
-      <section id="about" className={`py-20 relative z-10 ${
-        darkMode ? 'bg-gray-800' : 'bg-white'
-      }`}>
+      <section id="about" className="py-20 relative z-10 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
             <span className="text-pink-600">#</span> {t.aboutMe}
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">{isEnglish ? "Get to know more about me, my background, and what I do" : "Apprenez-en plus sur moi, mon parcours et ce que je fais"}</p>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6 animate-on-scroll" data-animation="fadeInLeft">
-              <div className={`p-6 rounded-lg ${
-                darkMode ? 'bg-gray-700' : 'bg-gray-50'
-              } shadow-xl border-l-4 border-pink-600 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group`}>
+              <div className="p-6 rounded-lg bg-gray-700 shadow-xl border-l-4 border-pink-600 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group">
                 <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-pink-600 opacity-5 group-hover:scale-150 transition-transform duration-700"></div>
-                
+
                 <p className="text-lg leading-relaxed relative z-10">{t.aboutText}</p>
                 <div className="grid grid-cols-2 gap-4 mt-6 relative z-10">
                   <div className="flex items-center space-x-2">
-                    <div className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                    <div className="p-2 rounded-full bg-pink-900/30 text-pink-600">
                       <Calendar className="h-5 w-5" />
                     </div>
                     <span>04 Février 2001</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                    <div className="p-2 rounded-full bg-pink-900/30 text-pink-600">
                       <MapPin className="h-5 w-5" />
                     </div>
                     <span>Koumassi Divo, Côte d'Ivoire</span>
@@ -452,33 +443,27 @@ function App() {
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-6 animate-on-scroll" data-animation="fadeInRight">
-              <div className={`p-6 rounded-lg ${
-                darkMode ? 'bg-gray-700' : 'bg-gray-50'
-              } shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden`}>
+              <div className="p-6 rounded-lg bg-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
                 <div className="absolute -left-10 -top-10 w-40 h-40 rounded-full bg-purple-600 opacity-5"></div>
-                
+
                 <h3 className="text-xl font-semibold mb-6 flex items-center relative">
-                  <div className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600 mr-3">
+                  <div className="p-2 rounded-full bg-pink-900/30 text-pink-600 mr-3">
                     <GraduationCap className="h-6 w-6" />
                   </div>
                   {isEnglish ? "Education" : "Formation"}
                 </h3>
-                
+
                 <div className="space-y-6 relative">
-                  <div className={`p-4 rounded-lg ${
-                    darkMode ? 'bg-gray-800' : 'bg-white'
-                  } border-l-2 border-pink-600 transform hover:translate-x-2 transition-transform duration-300`}>
+                  <div className="p-4 rounded-lg bg-gray-800 border-l-2 border-pink-600 transform hover:translate-x-2 transition-transform duration-300">
                     <div>
                       <h4 className="text-lg font-semibold">Licence en Développement d'Application (DAS)</h4>
                       <p className="text-pink-600">Université Virtuelle de Côte d'Ivoire (UVCI) | 2024</p>
                     </div>
                   </div>
-                  
-                  <div className={`p-4 rounded-lg ${
-                    darkMode ? 'bg-gray-800' : 'bg-white'
-                  } border-l-2 border-pink-600 transform hover:translate-x-2 transition-transform duration-300`}>
+
+                  <div className="p-4 rounded-lg bg-gray-800 border-l-2 border-pink-600 transform hover:translate-x-2 transition-transform duration-300">
                     <div>
                       <h4 className="text-lg font-semibold">Baccalauréat</h4>
                       <p className="text-pink-600">Lycée Municipal de Koumassi | 2021</p>
@@ -492,9 +477,8 @@ function App() {
       </section>
 
       {/* Skills Section with Progress Bars */}
-      <section id="skills" className={`py-20 relative overflow-hidden ${
-        darkMode ? '' : 'bg-gray-50'
-      }`}>
+      {/* Skills Section with Floating Circle Icons */}
+      <section id="skills" className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-10">
           <div className="absolute top-1/4 left-1/4 text-8xl font-bold text-pink-600 opacity-5">
             HTML
@@ -506,118 +490,133 @@ function App() {
             JS
           </div>
         </div>
-      
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
             <span className="text-pink-600">#</span> {isEnglish ? "My Skills" : "Mes Compétences"}
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
-            {isEnglish 
+            {isEnglish
               ? "These are the technologies and tools I work with on a daily basis"
               : "Voici les technologies et outils avec lesquels je travaille au quotidien"
             }
           </p>
 
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            {skills.map((skill, index) => (
-              <div 
-                key={skill.name} 
-                className="animate-on-scroll" 
-                data-animation="fadeInUp"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex justify-between mb-1">
-                  <span className="font-medium">{skill.name}</span>
-                  <span>{skill.value}%</span>
+          {/* Skills Circle Container */}
+          <div className="relative h-96 w-full mx-auto mb-12">
+            {/* Center Circle */}
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-pink-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg z-10">
+              <span className="text-white font-bold text-lg">
+                {isEnglish ? "Skills" : "Compétences"}
+              </span>
+            </div>
+
+            {/* Floating Skill Icons */}
+            {skills.map((skill, index) => {
+              // Calculate position in a circle
+              const totalSkills = skills.length;
+              const angle = (index / totalSkills) * 2 * Math.PI;
+              const radius = 150; // Distance from center
+              const left = `calc(50% + ${Math.cos(angle) * radius}px)`;
+              const top = `calc(50% + ${Math.sin(angle) * radius}px)`;
+
+              return (
+                <div
+                  key={skill.name}
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 animate-on-scroll hover:scale-110 transition-transform duration-300"
+                  style={{
+                    left,
+                    top,
+                    animationDelay: `${index * 0.1}s`,
+                  }}
+                  data-animation="fadeInScale"
+                >
+                  <div className="w-20 h-20 rounded-full flex flex-col items-center justify-center bg-gray-800 border-2 border-opacity-50 shadow-lg group hover:border-opacity-100 cursor-pointer"
+                    style={{ borderColor: skill.color.includes('from-') ? skill.color.split('from-')[1].split(' ')[0] : 'border-gray-600' }}
+                  >
+                    {/* Skill Icon - Replace with actual icons */}
+                    <div className="text-2xl mb-1">
+                      {getSkillIcon(skill.name)}
+                    </div>
+
+                    {/* Skill Name */}
+                    <span className="text-xs font-medium">{skill.name}</span>
+                  </div>
                 </div>
-                <div className={`w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden`}>
-                  <div 
-                    className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
-                    style={{ width: `${skill.value}%`, animationDelay: `${index * 0.1}s` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className={`py-20 relative ${
-        darkMode ? 'bg-gray-800' : 'bg-white'
-      }`}>
+      <section id="projects" className="py-20 relative bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
             <span className="text-pink-600">#</span> {t.projectsTitle}
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
-            {isEnglish 
-              ? "A showcase of my recent development projects and applications" 
+            {isEnglish
+              ? "A showcase of my recent development projects and applications"
               : "Une présentation de mes projets et applications récents"
             }
           </p>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <div 
+              <div
                 key={project.title}
-                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group ${
-                  darkMode ? 'bg-gray-700' : 'bg-white'
-                } animate-on-scroll`}
+                className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group bg-gray-700 animate-on-scroll"
                 data-animation="fadeInUp"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative overflow-hidden h-48">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                    <div className="p-4 w-full">
-                      <div className="flex flex-wrap gap-2 mb-2">
-                        {project.tags.map(tag => (
-                          <span 
-                            key={tag} 
-                            className="text-xs font-medium px-2 py-1 rounded-full bg-pink-600 text-white"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                    <div className="p-4 text-center">
+                      <div className="space-x-4">
+                        <a
+                          href={project.liveLink}
+                          className="inline-flex items-center px-4 py-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-colors duration-300"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Eye className="h-4 w-4 mr-2" />
+                          {t.viewProject}
+                        </a>
+                        <a
+                          href={project.codeLink}
+                          className="inline-flex items-center px-4 py-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-300"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="h-4 w-4 mr-2" />
+                          {t.viewCode}
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
-                  <h3 className="text-lg font-bold mb-2">{project.title}</h3>
-                  <p className={`mb-6 text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex space-x-3">
-                    <a 
-                      href={project.liveLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center text-sm font-medium px-3 py-2 rounded bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 transition-all duration-300"
-                    >
-                      <Eye className="h-4 w-4 mr-2" />
-                      {t.viewProject}
-                    </a>
-                    <a 
-                      href={project.codeLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`flex items-center text-sm font-medium px-3 py-2 rounded border border-pink-600 ${
-                        darkMode ? 'text-pink-600 hover:bg-gray-600' : 'text-pink-600 hover:bg-pink-50'
-                      } transition-all duration-300`}
-                    >
-                      <Github className="h-4 w-4 mr-2" />
-                      {t.viewCode}
-                    </a>
+                  <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.tags.map(tag => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 bg-gray-800 text-xs font-medium rounded-full text-pink-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -625,65 +624,55 @@ function App() {
           </div>
         </div>
       </section>
-      
-      {/* Experience Section */}
-      <section id="experience" className={`py-20 relative ${
-        darkMode ? '' : 'bg-gray-50'
-      }`}>
+
+      {/* Formation/Certifications Section */}
+      <section id="formation" className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
-            <span className="text-pink-600">#</span> {t.Experience}
+            <span className="text-pink-600">#</span> {isEnglish ? "Certifications" : "Certifications"}
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
-            {isEnglish 
-              ? "My professional journey and certifications" 
-              : "Mon parcours professionnel et mes certifications"
+            {isEnglish
+              ? "Professional certifications and training I've completed"
+              : "Certifications professionnelles et formations que j'ai suivies"
             }
           </p>
-          
-          <div className="grid md:grid-cols-2 gap-10">
+
+          <div className="grid md:grid-cols-2 gap-8">
             {experiences.map((exp, index) => (
-              <div 
+              <div
                 key={exp.title}
-                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group ${
-                  darkMode ? 'bg-gray-700' : 'bg-white'
-                } animate-on-scroll`}
+                className="p-6 rounded-xl bg-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col md:flex-row gap-6 animate-on-scroll"
                 data-animation={index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}
               >
-                <div className="relative overflow-hidden h-48">
-                  <img 
-                    src={exp.image} 
-                    alt={exp.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                <div className="md:w-1/3 rounded-lg overflow-hidden bg-gray-800 p-4 flex items-center justify-center">
+                  <img
+                    src={exp.image}
+                    alt={exp.title}
+                    className="w-full h-auto object-contain"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                      <div className="flex items-center text-pink-400">
-                        <Briefcase className="h-4 w-4 mr-2" />
-                        <span>{exp.issuer}</span>
-                      </div>
+                </div>
+                <div className="md:w-2/3 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{exp.title}</h3>
+                    <div className="flex items-center mb-4">
+                      <Briefcase className="h-4 w-4 text-pink-600 mr-2" />
+                      <span className="text-gray-300">{exp.issuer}</span>
+                    </div>
+                    <div className="flex items-center mb-4">
+                      <Calendar className="h-4 w-4 text-pink-600 mr-2" />
+                      <span className="text-gray-300">{exp.date}</span>
                     </div>
                   </div>
-                </div>
-                
-                <div className="p-6 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <Calendar className={`h-5 w-5 mr-2 ${darkMode ? 'text-pink-500' : 'text-pink-600'}`} />
-                    <span>{exp.date}</span>
-                  </div>
-                  
-                  <a 
-                    href={exp.link} 
+                  <a
+                    href={exp.link}
+                    className="inline-flex items-center text-pink-600 hover:text-pink-500 transition-colors duration-300 mt-2"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center text-sm ${
-                      darkMode ? 'text-pink-500 hover:text-pink-400' : 'text-pink-600 hover:text-pink-700'
-                    } transition-colors duration-300`}
                   >
-                    <span className="mr-1">{isEnglish ? "View certificate" : "Voir le certificat"}</span>
-                    <ExternalLink className="h-4 w-4" />
+                    <span>{isEnglish ? "View Certificate" : "Voir le certificat"}</span>
+                    <ExternalLink className="h-4 w-4 ml-2" />
                   </a>
                 </div>
               </div>
@@ -693,362 +682,373 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className={`py-20 relative ${
-        darkMode ? 'bg-gray-800' : 'bg-white'
-      }`}>
-        <div className="absolute inset-0 pointer-events-none opacity-20">
-          <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-400 opacity-20 rounded-full blur-3xl"></div>
-          <div className="absolute top-0 left-0 w-72 h-72 bg-purple-400 opacity-20 rounded-full blur-3xl"></div>
+      <section id="contact" className="py-20 relative bg-gray-800">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-20 left-20 w-60 h-60 bg-pink-400 opacity-5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-400 opacity-5 rounded-full blur-3xl"></div>
         </div>
-        
-        <div className="max-w-7xl mx-auto px-4">
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
-            <span className="text-pink-600">#</span> {t.contact}
+            <span className="text-pink-600">#</span> Contact
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
-            {isEnglish 
-              ? "Feel free to reach out to me for collaborations or questions" 
-              : "N'hésitez pas à me contacter pour des collaborations ou des questions"
+            {isEnglish
+              ? "Feel free to reach out to me for any questions or opportunities"
+              : "N'hésitez pas à me contacter pour toute question ou opportunité"
             }
           </p>
-          
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="animate-on-scroll" data-animation="fadeInLeft">
-              <div className={`p-6 rounded-xl ${
-                darkMode ? 'bg-gray-700' : 'bg-gray-50'
-              } shadow-lg relative overflow-hidden`}>
-                <div className="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-pink-600 opacity-5"></div>
-                
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <Mail className="h-6 w-6 text-pink-600" />
-                  {isEnglish ? "Get in Touch" : "Contactez-moi"}
+
+          <div className="grid md:grid-cols-5 gap-8 items-start">
+            <div className="md:col-span-2 space-y-6 animate-on-scroll" data-animation="fadeInLeft">
+              <div className="p-6 rounded-xl bg-gray-700 shadow-xl">
+                <h3 className="text-xl font-bold mb-6 relative inline-block">
+                  {isEnglish ? "Contact Information" : "Informations de Contact"}
                 </h3>
-                
-                <div className="space-y-4 relative z-10">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
-                      <Mail className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm opacity-70">Email</h4>
-                      <a href="mailto:annemarie.agbonou@gmail.com" className="text-lg hover:text-pink-600 transition-colors">
-                        annemarie.agbonou@gmail.com
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
-                      <Phone className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm opacity-70">{isEnglish ? "Phone" : "Téléphone"}</h4>
-                      <a href="tel:+22559123456" className="text-lg hover:text-pink-600 transition-colors">
-                        +225 59 12 34 56
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <div className="p-3 rounded-lg bg-gray-800 text-pink-600 mr-4">
                       <MapPin className="h-6 w-6" />
                     </div>
                     <div>
-                      <h4 className="text-sm opacity-70">{isEnglish ? "Location" : "Localisation"}</h4>
-                      <p className="text-lg">Koumassi, Abidjan, Côte d'Ivoire</p>
+                      <h4 className="font-medium">{isEnglish ? "Location" : "Localisation"}</h4>
+                      <p className="text-gray-300">Koumassi Divo, Abidjan, Côte d'Ivoire</p>
                     </div>
                   </div>
-                  
-                  <div className="pt-6 flex gap-4">
-                    <a 
-                      href="https://github.com/AnneMarieWecode" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`p-3 rounded-full ${
-                        darkMode 
-                          ? 'bg-gray-600 hover:bg-pink-600 text-white' 
-                          : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
-                      } transition-all duration-300`}
-                      aria-label="GitHub"
-                    >
-                      <Github className="h-6 w-6" />
-                    </a>
-                    <a 
-                      href="https://linkedin.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`p-3 rounded-full ${
-                        darkMode 
-                          ? 'bg-gray-600 hover:bg-pink-600 text-white' 
-                          : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
-                      } transition-all duration-300`}
-                      aria-label="LinkedIn"
-                    >
+
+                  <div className="flex items-start">
+                    <div className="p-3 rounded-lg bg-gray-800 text-pink-600 mr-4">
                       <Mail className="h-6 w-6" />
-                    </a>
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Email</h4>
+                      <a href="mailto:annemarieagbonou@gmail.com" className="text-gray-300 hover:text-pink-600 transition-colors duration-300">
+                        annemarieagbonou@gmail.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="p-3 rounded-lg bg-gray-800 text-pink-600 mr-4">
+                      <Phone className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">{isEnglish ? "Phone" : "Téléphone"}</h4>
+                      <a href="tel:+2250779090101" className="text-gray-300 hover:text-pink-600 transition-colors duration-300">
+                        +225 01 72 31 79 83
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="animate-on-scroll" data-animation="fadeInRight">
-              <form className={`p-6 rounded-xl ${
-                darkMode ? 'bg-gray-700' : 'bg-gray-50'
-              } shadow-lg`}>
-                <h3 className="text-2xl font-bold mb-6">
-                  {isEnglish ? "Send me a message" : "Envoyez-moi un message"}
+
+              <div className="p-6 rounded-xl bg-gray-700 shadow-xl">
+                <h3 className="text-xl font-bold mb-6 relative inline-block">
+                  {isEnglish ? "Follow Me" : "Suivez-moi"}
                 </h3>
-                
-                <div className="space-y-4">
+
+                <div className="flex space-x-4">
+                  <a
+                    href="https://github.com/AnneMarieWecode"
+                    className="p-3 rounded-lg bg-gray-800 text-white hover:bg-pink-600 transition-colors duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/agbonou-kossiwa-anne-marie/"
+                    className="p-3 rounded-lg bg-gray-800 text-white hover:bg-pink-600 transition-colors duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a
+                    href="#"
+                    className="p-3 rounded-lg bg-gray-800 text-white hover:bg-pink-600 transition-colors duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-3 animate-on-scroll" data-animation="fadeInRight">
+              <div className="p-6 rounded-xl bg-gray-700 shadow-xl">
+                <h3 className="text-xl font-bold mb-6 relative inline-block">
+                  {isEnglish ? "Send Me a Message" : "Envoyez-moi un Message"}
+                </h3>
+
+                <form className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium mb-2" htmlFor="name">{t.name}</label>
+                      <input
+                        type="text"
+                        id="name"
+                        className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:ring-2 focus:ring-pink-600 focus:border-transparent transition-all duration-300 outline-none"
+                        placeholder={isEnglish ? "Your name" : "Votre nom"}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" htmlFor="email">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:ring-2 focus:ring-pink-600 focus:border-transparent transition-all duration-300 outline-none"
+                        placeholder={isEnglish ? "Your email" : "Votre email"}
+                      />
+                    </div>
+                  </div>
+
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-1">
-                      {t.name}
-                    </label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      className={`w-full px-4 py-3 rounded-lg ${
-                        darkMode 
-                          ? 'bg-gray-800 focus:ring-2 focus:ring-pink-600 border-gray-700' 
-                          : 'bg-white focus:ring-2 focus:ring-pink-600 border-gray-300'
-                      } focus:outline-none transition-all duration-300 border`}
-                      placeholder={isEnglish ? "Your name" : "Votre nom"}
+                    <label className="block text-sm font-medium mb-2" htmlFor="subject">{isEnglish ? "Subject" : "Sujet"}</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:ring-2 focus:ring-pink-600 focus:border-transparent transition-all duration-300 outline-none"
+                      placeholder={isEnglish ? "Message subject" : "Sujet du message"}
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">
-                      Email
-                    </label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      className={`w-full px-4 py-3 rounded-lg ${
-                        darkMode 
-                          ? 'bg-gray-800 focus:ring-2 focus:ring-pink-600 border-gray-700' 
-                          : 'bg-white focus:ring-2 focus:ring-pink-600 border-gray-300'
-                      } focus:outline-none transition-all duration-300 border`}
-                      placeholder={isEnglish ? "Your email" : "Votre email"}
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">
-                      {t.message}
-                    </label>
-                    <textarea 
-                      id="message" 
-                      rows="5" 
-                      className={`w-full px-4 py-3 rounded-lg ${
-                        darkMode 
-                          ? 'bg-gray-800 focus:ring-2 focus:ring-pink-600 border-gray-700' 
-                          : 'bg-white focus:ring-2 focus:ring-pink-600 border-gray-300'
-                      } focus:outline-none transition-all duration-300 border`}
+                    <label className="block text-sm font-medium mb-2" htmlFor="message">{t.message}</label>
+                    <textarea
+                      id="message"
+                      rows="5"
+                      className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:ring-2 focus:ring-pink-600 focus:border-transparent transition-all duration-300 outline-none resize-none"
                       placeholder={isEnglish ? "Your message" : "Votre message"}
                     ></textarea>
                   </div>
-                  
-                  <button 
+
+                  <button
                     type="submit"
-                    className="w-full py-3 px-6 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg flex justify-center items-center hover:from-pink-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                    className="w-full flex justify-center items-center px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg hover:from-pink-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group"
                   >
-                    {t.sendMessage}
+                    <Mail className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+                    <span>{t.sendMessage}</span>
                   </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className={`py-8 ${
-        darkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4">
+      <footer className="py-10 bg-gray-900 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
+            <div className="mb-6 md:mb-0">
               <div className="flex items-center">
                 <div className="h-10 w-10 rounded-lg overflow-hidden bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
                   <Code2 className="h-6 w-6 text-white" />
                 </div>
-                <span className="ml-3 text-xl font-extrabold tracking-tighter">
+                <span className="ml-3 text-xl font-extrabold tracking-tighter text-white">
                   Anne Marie
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 ml-1">.dev</span>
                 </span>
               </div>
-              <p className="mt-2 text-sm opacity-70">{t.copyright}</p>
+              <p className="mt-2 text-sm text-gray-400 max-w-md">
+                {isEnglish
+                  ? "Full Stack Developer specializing in creating modern, responsive, and user-friendly web applications."
+                  : "Développeuse Full Stack spécialisée dans la création d'applications web modernes, responsives et conviviales."
+                }
+              </p>
             </div>
-            
-            <div className="flex gap-4">
-              <a 
-                href="https://github.com/AnneMarieWecode" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className={`p-2 rounded-full ${
-                  darkMode 
-                    ? 'bg-gray-800 hover:bg-pink-600 text-white' 
-                    : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
-                } transition-all duration-300`}
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a 
-                href="mailto:annemarie.agbonou@gmail.com" 
-                className={`p-2 rounded-full ${
-                  darkMode 
-                    ? 'bg-gray-800 hover:bg-pink-600 text-white' 
-                    : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
-                } transition-all duration-300`}
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className={`p-2 rounded-full ${
-                  darkMode 
-                    ? 'bg-gray-800 hover:bg-pink-600 text-white' 
-                    : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
-                } transition-all duration-300`}
-                aria-label="LinkedIn"
-              >
-                <Phone className="h-5 w-5" />
-              </a>
+
+            <div className="flex flex-col items-center md:items-end">
+              <div className="flex space-x-4 mb-4">
+                <a
+                  href="https://github.com/AnneMarieWecode"
+                  className="p-2 rounded-full bg-gray-800 text-white hover:bg-pink-600 transition-colors duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/agbonou-kossiwa-anne-marie/"
+                  className="p-2 rounded-full bg-gray-800 text-white hover:bg-pink-600 transition-colors duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="p-2 rounded-full bg-gray-800 text-white hover:bg-pink-600 transition-colors duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                  </svg>
+                </a>
+              </div>
+              <p className="text-sm text-gray-400">{t.copyright}</p>
             </div>
           </div>
         </div>
+
+        {/* Back to top button */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className={`fixed right-6 bottom-6 p-3 rounded-full bg-pink-600 text-white shadow-lg transition-all duration-300 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50 ${scrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10 pointer-events-none'
+            }`}
+          aria-label="Back to top"
+        >
+          <ArrowUp className="h-6 w-6" />
+        </button>
       </footer>
-      
-      {/* Scroll to top button */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-6 right-6 p-3 rounded-full bg-pink-600 text-white shadow-lg transition-all duration-300 transform hover:scale-110 z-50 ${
-          scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-        }`}
-        aria-label="Scroll to top"
-      >
-        <ArrowUp className="h-6 w-6" />
-      </button>
-      
-      {/* Custom CSS for animations */}
+
+      {/* CSS for additional animations */}
       <style jsx>{`
-        @keyframes scroll-indicator {
-          0% { transform: translateY(0); opacity: 1; }
-          75% { transform: translateY(12px); opacity: 0; }
-          100% { transform: translateY(0); opacity: 0; }
-        }
-        
-        @keyframes slide-up {
-          0% { transform: translateY(100%); }
-          100% { transform: translateY(0); }
-        }
-        
-        @keyframes gradient-x {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes float {
-          0% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(5deg); }
-          100% { transform: translateY(0px) rotate(0deg); }
-        }
-        
-        @keyframes spin-slow {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        
-        .animate-scroll-indicator {
-          animation: scroll-indicator 2s infinite;
-        }
-        
-        .animate-slide-up {
-          animation: slide-up 0.5s ease-out;
-        }
-        
-        .animate-gradient-x {
-          background-size: 200% 200%;
-          animation: gradient-x 3s ease infinite;
-        }
-        
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 15s linear infinite;
-        }
-        
-        .animate-on-scroll {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.7s ease-out;
-        }
-        
-        .animate-on-scroll.appear {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        
-        @keyframes fadeInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes fadeInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        [data-animation="fadeInLeft"].appear {
-          animation: fadeInLeft 0.7s ease-out forwards;
-        }
-        
-        [data-animation="fadeInRight"].appear {
-          animation: fadeInRight 0.7s ease-out forwards;
-        }
-        
-        [data-animation="fadeInUp"].appear {
-          animation: fadeInUp 0.7s ease-out forwards;
-        }
-        
-        .bg-grid-pattern {
-          background-image: 
-            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
-          background-size: 35px 35px;
-        }
-      `}</style>
+.bg-grid-pattern {
+background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+background-size: 20px 20px;
+}
+
+.animate-gradient-x {
+background-size: 200% 200%;
+animation: gradient-x 3s ease infinite;
+}
+
+.animate-slide-up {
+animation: slide-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.animate-float {
+animation: float 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+animation: spin 20s linear infinite;
+}
+
+.animate-scroll-indicator {
+animation: scroll-indicator 2s ease-in-out infinite;
+}
+
+.animate-on-scroll {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.appear {
+opacity: 1;
+transform: translateY(0);
+}
+
+@keyframes gradient-x {
+0%, 100% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+}
+
+@keyframes slide-up {
+0% {
+transform: translateY(100%);
+}
+100% {
+transform: translateY(0);
+}
+}
+
+@keyframes float {
+0%, 100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(-20px);
+}
+}
+
+@keyframes scroll-indicator {
+0%, 100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(6px);
+}
+}
+
+@keyframes spin {
+0% {
+transform: rotate(0deg);
+}
+100% {
+transform: rotate(360deg);
+}
+}
+
+[data-animation="fadeInLeft"].appear {
+animation: fadeInLeft 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+[data-animation="fadeInRight"].appear {
+animation: fadeInRight 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+[data-animation="fadeInUp"].appear {
+animation: fadeInUp 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fadeInLeft {
+0% {
+transform: translateX(-50px);
+opacity: 0;
+}
+100% {
+transform: translateX(0);
+opacity: 1;
+}
+}
+
+@keyframes fadeInRight {
+0% {
+transform: translateX(50px);
+opacity: 0;
+}
+100% {
+transform: translateX(0);
+opacity: 1;
+}
+}
+
+@keyframes fadeInUp {
+0% {
+transform: translateY(30px);
+opacity: 0;
+}
+100% {
+transform: translateY(0);
+opacity: 1;
+}
+}
+`}</style>
     </div>
   );
 }
