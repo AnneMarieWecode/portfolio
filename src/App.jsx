@@ -1,15 +1,21 @@
-import './App.css'
-import React, { useState, useEffect, useRef } from 'react';
 import logo from './assets/logo.jpeg'; 
-import { Github, Mail, Phone, MapPin, Calendar, Code2, Briefcase, GraduationCap, 
+import "./App.css"
+import { useState, useEffect, useRef } from 'react';
+import { 
+  Github, Mail, Phone, MapPin, Calendar, Code2, Briefcase, GraduationCap, 
   ChevronRight, Moon, Sun, Languages, Download, User, AlignCenterVertical as Certificate, 
-  FolderGit2, ExternalLink, Eye, Menu, X } from 'lucide-react';
+  FolderGit2, ExternalLink, Eye, Menu, X, ArrowUp
+} from 'lucide-react';
+
+// Simulation d'un logo importé
+const logoPlaceholder = "/api/placeholder/120/120";
 
 function App() {
   const [isEnglish, setIsEnglish] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const navRef = useRef(null);
 
   // Handle scroll for navbar transparency change
@@ -123,7 +129,7 @@ function App() {
       sendMessage: "Send",
       name: "Name",
       message: "Message",
-      copyright: "© 2024 Anne Marie Agbonou. All rights reserved.",
+      copyright: "© 2025 Anne Marie Agbonou. All rights reserved.",
     }
   };
 
@@ -133,7 +139,7 @@ function App() {
     { label: t.about, icon: User, id: "about" },
     { label: t.skills, icon: Code2, id: "skills" },
     { label: t.projects, icon: FolderGit2, id: "projects" },
-    { label: t.Experience, icon: Certificate, id: "Experience" },
+    { label: t.Experience, icon: Certificate, id: "experience" },
     { label: t.contact, icon: Mail, id: "contact" },
   ];
 
@@ -142,50 +148,89 @@ function App() {
       title: "Projet e-commerce my_shop",
       description: isEnglish 
         ? "Development of a responsive website with a secure authentication system, an admin interface (CRUD for users/products/categories), an advanced search engine, and adherence to UX/UI best practices."
-        : "Création d’un site responsive avec système d’authentification sécurisé, interface admin (CRUD utilisateurs/produits/catégories), moteur de recherche avancé, et bonnes pratiques UX/UI.",
-      image: "https://img.freepik.com/photos-premium/femme-papier-sacs-telephone_249974-882.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
+        : "Création d'un site responsive avec système d'authentification sécurisé, interface admin (CRUD utilisateurs/produits/catégories), moteur de recherche avancé, et bonnes pratiques UX/UI.",
+      image: "/api/placeholder/600/400",
       tags: ["HTML", "Tailwind CSS", "PHP (POO)", "MySQL"],
-      liveLink: "",
+      liveLink: "#",
       codeLink: "https://github.com/AnneMarieWecode"
     },
     {
       title: "Projet MVVM_TWP",
       description: isEnglish 
         ? "Development of a Trello-inspired web application using Vue.js, connected to a WordPress API. Implemented full functionality for managing lists (categories), cards (posts), and comments."
-        : "Développement d’une application web inspirée de Trello avec Vue.js, connectée à une API WordPress. Mise en place des fonctionnalités complètes de gestion des listes (catégories), cartes (articles) et commentaires.",
-      image: "https://img.freepik.com/vecteurs-libre/illustration-du-concept-methode-kanban_114360-13016.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
+        : "Développement d'une application web inspirée de Trello avec Vue.js, connectée à une API WordPress. Mise en place des fonctionnalités complètes de gestion des listes (catégories), cartes (articles) et commentaires.",
+      image: "/api/placeholder/600/400",
       tags: ["Vue.js", "WordPress", "REST API"],
-      liveLink: "",
+      liveLink: "#",
       codeLink: "https://github.com/AnneMarieWecode"
     },
     {
       title: "Projet Microservice Dashboard",
       description: isEnglish 
         ? "Developed a React-based dashboard with authentication, dynamic widget integration (Weather, RSS, etc.), automatic refresh, and deployment using Docker Compose."
-        : "Développement d’un Dashboard en React avec authentification, ajout de widgets dynamiques via services (Météo, RSS…), rafraîchissement auto, et déploiement avec Docker Compose.",
-      image: "https://img.freepik.com/photos-premium/gens-concoivent-sites-web-fond-transparent_53876-982834.jpg?uid=R99967860&ga=GA1.1.1775713900.1739299280&semt=ais_hybrid&w=740",
+        : "Développement d'un Dashboard en React avec authentification, ajout de widgets dynamiques via services (Météo, RSS…), rafraîchissement auto, et déploiement avec Docker Compose.",
+      image: "/api/placeholder/600/400",
       tags: ["REACT js", "NewsApp API", "Meteo API", "Coctail API", "Bitcoin API"],
-      liveLink: "",
+      liveLink: "#",
       codeLink: "https://github.com/AnneMarieWecode"
     }
   ];
 
+  const skills = [
+    { name: 'JavaScript', value: 90, color: 'from-pink-500 to-purple-600' },
+    { name: 'HTML/CSS', value: 95, color: 'from-blue-500 to-teal-400' },
+    { name: 'React.js', value: 85, color: 'from-cyan-500 to-blue-600' },
+    { name: 'Vue.js', value: 80, color: 'from-green-500 to-emerald-400' },
+    { name: 'Wordpress', value: 75, color: 'from-blue-600 to-indigo-600' },
+    { name: 'PHP', value: 82, color: 'from-indigo-500 to-purple-500' },
+    { name: 'Bootstrap', value: 88, color: 'from-purple-500 to-pink-500' },
+    { name: 'Tailwind CSS', value: 90, color: 'from-teal-400 to-cyan-500' },
+    { name: 'Figma', value: 78, color: 'from-rose-500 to-pink-600' },
+    { name: 'API Integration', value: 85, color: 'from-amber-500 to-orange-600' },
+    { name: 'Git', value: 87, color: 'from-red-500 to-rose-500' },
+    { name: 'SQL', value: 80, color: 'from-sky-500 to-blue-600' }
+  ];
+
+  const experiences = [
+    {
+      title: "JavaScript Certification",
+      issuer: "NAN DIGITAL ACADEMY",
+      date: "2023 - 2024",
+      image: "/api/placeholder/400/300",
+      link: "#"
+    },
+    {
+      title: "Developpement fullstack",
+      issuer: "WeCode",
+      date: "2023",
+      image: "/api/placeholder/400/300",
+      link: "#"
+    }
+  ];
+
   return (
-    <div className={`min-h-screen bg-gray-900 text-white transition-colors duration-500`}>
+    <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} transition-colors duration-500`}>
       {/* Navigation */}
       <nav 
         ref={navRef}
         className={`fixed w-full z-50 transition-all duration-500 ${
           scrolled 
-            ? `bg-gray-900/90 shadow-lg backdrop-blur-lg py-2` 
+            ? `${darkMode ? 'bg-gray-900/90' : 'bg-white/90'} shadow-lg backdrop-blur-lg py-2` 
             : `bg-transparent py-6`
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <Code2 className={`h-8 w-8 text-pink-600 transition-all duration-500 ${scrolled ? 'rotate-90' : 'rotate-0'}`} />
-              <span className={`ml-2 text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text ${scrolled ? 'text-transparent' : ''}`}>Anne Marie</span>
+              <div className={`h-10 w-10 rounded-lg overflow-hidden bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center transition-all duration-500 ${scrolled ? 'rotate-12' : 'rotate-0'}`}>
+                <Code2 className="h-6 w-6 text-white" />
+              </div>
+              <span className={`ml-3 text-xl font-extrabold tracking-tighter ${
+                darkMode ? 'text-white' : 'text-gray-900'
+              } ${scrolled ? 'opacity-100' : ''}`}>
+                Anne Marie
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 ml-1">.dev</span>
+              </span>
             </div>
 
             {/* Desktop Navigation */}
@@ -200,7 +245,7 @@ function App() {
                       : 'after:w-0 hover:after:w-full'
                   }`}
                 >
-                  <item.icon className="h-4 w-4 mr-1" />
+                  <item.icon className="h-4 w-4 mr-2" />
                   {item.label}
                 </a>
               ))}
@@ -209,15 +254,29 @@ function App() {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setIsEnglish(!isEnglish)}
-                className="p-2 rounded-full hover:bg-pink-100 dark:hover:bg-gray-700 transition-colors duration-300"
+                className={`p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ${
+                  darkMode ? 'text-white' : 'text-gray-900'
+                }`}
                 aria-label={isEnglish ? "Switch to French" : "Switch to English"}
               >
                 <Languages className="h-5 w-5" />
               </button>
               
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ${
+                  darkMode ? 'text-white' : 'text-gray-900'
+                }`}
+                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+              
               {/* Mobile Menu Button */}
               <button 
-                className="md:hidden p-2 rounded-full hover:bg-pink-100 dark:hover:bg-gray-700 transition-colors duration-300"
+                className={`md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 ${
+                  darkMode ? 'text-white' : 'text-gray-900'
+                }`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
               >
@@ -233,15 +292,15 @@ function App() {
             ? 'max-h-96 opacity-100' 
             : 'max-h-0 opacity-0'
         }`}>
-          <div className={`bg-gray-800 shadow-lg rounded-b-2xl mx-4`}>
+          <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg rounded-b-2xl mx-4`}>
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => handleNavItemClick(item.id)}
-                className={`flex items-center space-x-3 px-5 py-4 text-lg border-b border-gray-700 ${
+                className={`flex items-center space-x-3 px-5 py-4 text-lg ${darkMode ? 'border-gray-700' : 'border-gray-200'} border-b ${
                   activeSection === item.id 
-                    ? 'text-pink-600 bg-pink-50 isdark' 
+                    ? `text-pink-600 ${darkMode ? 'bg-gray-700/30' : 'bg-pink-50'}` 
                     : ''
                 }`}
               >
@@ -255,52 +314,90 @@ function App() {
       </nav>
 
       {/* Hero Section with Parallax Effect */}
-      <section id="hero" className="min-h-screen flex items-center pt-20 pb-16 px-4 overflow-hidden relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-10 w-60 h-60 bg-pink-400 opacity-10 rounded-full blur-3xl animate-blob"></div>
-          <div className="absolute bottom-10 left-10 w-80 h-80 bg-purple-400 opacity-10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-blue-400 opacity-10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+      <section id="hero" className={`min-h-screen flex items-center pt-24 pb-16 px-4 overflow-hidden relative ${
+        darkMode ? '' : 'bg-gradient-to-b from-gray-50 to-gray-100'
+      }`}>
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-20 right-10 w-60 h-60 bg-pink-400 opacity-10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 left-10 w-80 h-80 bg-purple-400 opacity-10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-blue-400 opacity-10 rounded-full blur-3xl animate-pulse"></div>
+          
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         </div>
         
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="md:w-1/2 animate-fadeInLeft">
-              <div className="mb-3 inline-block">
-                <span className="bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-medium px-4 py-1 rounded-full">
+            <div className="md:w-1/2 space-y-6">
+              <div className="mb-3 inline-block overflow-hidden relative">
+                <span className="bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-medium px-4 py-1 rounded-full inline-flex items-center">
+                  <span className="mr-2 h-2 w-2 bg-white rounded-full animate-pulse"></span>
                   {isEnglish ? "Welcome to my portfolio" : "Bienvenue sur mon portfolio"}
                 </span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Agbonou Kossiwa <span className="bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text">Anne Marie</span>
+              
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 relative">
+                <span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>Agbonou Kossiwa</span>
+                <div className="overflow-hidden inline-block ml-3">
+                  <span className="bg-gradient-to-r from-pink-600 to-purple-600 text-transparent bg-clip-text inline-block animate-gradient-x">
+                    Anne Marie
+                  </span>
+                </div>
               </h1>
-              <h2 className="text-2xl md:text-3xl font-light mb-6 overflow-hidden">
-                <span className="typing-animation">{t.intro}</span>
-              </h2>
+              
+              <div className="h-10 overflow-hidden relative">
+                <h2 className="text-2xl md:text-3xl font-light absolute animate-slide-up">
+                  <span className="flex items-center">
+                    <span className="mr-2 h-2 w-2 bg-pink-600 rounded-full"></span>
+                    {t.intro}
+                  </span>
+                </h2>
+              </div>
+              
               <p className="text-lg mb-8 opacity-90 max-w-lg leading-relaxed">{t.motivation}</p>
+              
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#contact"
-                  className="flex items-center px-6 py-3 bg-gradient-to-r from-pink-600 to-pink-500 text-white rounded-lg hover:from-pink-700 hover:to-pink-600 transition-all duration-300 transform hover:translate-y-1 hover:shadow-lg"
+                  className="flex items-center px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg hover:from-pink-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group"
                 >
-                  <Mail className="h-5 w-5 mr-2" />
-                  Contact
+                  <Mail className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+                  <span>Contact</span>
                 </a>
                 <a
                   href="https://drive.google.com/file/d/19K-y48bQbb7Z2DbHkvQtpdjIQwowxx94/view?usp=sharing"
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-lg hover:bg-pink-50 dark:hover:bg-gray-800 transition-all duration-300 transform hover:translate-y-1"
+                  className={`group flex items-center px-6 py-3 border-2 border-pink-600 rounded-lg ${
+                    darkMode ? 'text-pink-600 hover:bg-gray-800' : 'text-pink-600 hover:bg-pink-50'
+                  } transition-all duration-300 transform hover:-translate-y-1`}
                 >
                   <Download className="h-5 w-5 mr-2 group-hover:animate-bounce" />
                   {t.downloadCV}
                 </a>
               </div>
             </div>
-            <div className="md:w-1/2 flex justify-center animate-fadeInRight">
+            
+            <div className="md:w-1/2 flex justify-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full blur-xl opacity-30 animate-pulse"></div>
-                <div className="relative rounded-full w-64 h-64 p-2 bg-gradient-to-br from-pink-500 to-purple-600 animate-spin-slow">
+                
+                {/* Floating Elements */}
+                <div className="absolute -top-10 -left-10 w-16 h-16 bg-blue-400 rounded-lg opacity-20 animate-float" style={{ animationDelay: '0s' }}></div>
+                <div className="absolute -bottom-5 -right-5 w-12 h-12 bg-pink-400 rounded-full opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-1/2 -right-8 w-8 h-8 bg-purple-400 rounded-lg opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
+                
+                <div className="relative rounded-full w-64 h-64 p-2 bg-gradient-to-br from-pink-500 to-purple-600">
+                  <div className="absolute inset-0 rounded-full animate-spin-slow">
+                    {Array.from({ length: 12 }).map((_, i) => (
+                      <div 
+                        key={i} 
+                        className="absolute w-3 h-3 bg-white rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+                        style={{ transform: `rotate(${i * 30}deg) translateY(-32px) translateX(-50%)` }}
+                      ></div>
+                    ))}
+                  </div>
+                  
                   <img
                     src={logo}
                     alt="Professional headshot"
@@ -313,15 +410,17 @@ function App() {
           
           {/* Scroll down indicator */}
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-            <div className="w-6 h-10 rounded-full border-2 border-pink-600 flex justify-center">
-              <div className="w-1 h-2 bg-pink-600 rounded-full mt-2 animate-scrollDown"></div>
+            <div className="w-6 h-10 rounded-full border-2 border-pink-600 flex justify-center relative overflow-hidden">
+              <div className="w-1 h-3 bg-pink-600 rounded-full absolute top-2 animate-scroll-indicator"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section with Card Layout */}
-      <section id="about" className={`py-20 bg-gray-800 relative z-10`}>
+      <section id="about" className={`py-20 relative z-10 ${
+        darkMode ? 'bg-gray-800' : 'bg-white'
+      }`}>
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
             <span className="text-pink-600">#</span> {t.aboutMe}
@@ -331,15 +430,23 @@ function App() {
           
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6 animate-on-scroll" data-animation="fadeInLeft">
-              <div className={`p-6 rounded-lg bg-gray-700 shadow-xl border-l-4 border-pink-600 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1`}>
-                <p className="text-lg leading-relaxed">{t.aboutText}</p>
-                <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className={`p-6 rounded-lg ${
+                darkMode ? 'bg-gray-700' : 'bg-gray-50'
+              } shadow-xl border-l-4 border-pink-600 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group`}>
+                <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-pink-600 opacity-5 group-hover:scale-150 transition-transform duration-700"></div>
+                
+                <p className="text-lg leading-relaxed relative z-10">{t.aboutText}</p>
+                <div className="grid grid-cols-2 gap-4 mt-6 relative z-10">
                   <div className="flex items-center space-x-2">
-                    <Calendar className="h-5 w-5 text-pink-600" />
+                    <div className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                      <Calendar className="h-5 w-5" />
+                    </div>
                     <span>04 Février 2001</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <MapPin className="h-5 w-5 text-pink-600" />
+                    <div className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                      <MapPin className="h-5 w-5" />
+                    </div>
                     <span>Koumassi Divo, Côte d'Ivoire</span>
                   </div>
                 </div>
@@ -347,21 +454,31 @@ function App() {
             </div>
             
             <div className="space-y-6 animate-on-scroll" data-animation="fadeInRight">
-              <div className={`p-6 rounded-lg bg-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300`}>
-                <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <GraduationCap className="h-6 w-6 text-pink-600 mr-2" />
+              <div className={`p-6 rounded-lg ${
+                darkMode ? 'bg-gray-700' : 'bg-gray-50'
+              } shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden`}>
+                <div className="absolute -left-10 -top-10 w-40 h-40 rounded-full bg-purple-600 opacity-5"></div>
+                
+                <h3 className="text-xl font-semibold mb-6 flex items-center relative">
+                  <div className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600 mr-3">
+                    <GraduationCap className="h-6 w-6" />
+                  </div>
                   {isEnglish ? "Education" : "Formation"}
                 </h3>
                 
-                <div className="space-y-6">
-                  <div className="flex border-l-2 border-pink-600 pl-4 py-2 transform hover:translate-x-2 transition-transform duration-300">
+                <div className="space-y-6 relative">
+                  <div className={`p-4 rounded-lg ${
+                    darkMode ? 'bg-gray-800' : 'bg-white'
+                  } border-l-2 border-pink-600 transform hover:translate-x-2 transition-transform duration-300`}>
                     <div>
                       <h4 className="text-lg font-semibold">Licence en Développement d'Application (DAS)</h4>
                       <p className="text-pink-600">Université Virtuelle de Côte d'Ivoire (UVCI) | 2024</p>
                     </div>
                   </div>
                   
-                  <div className="flex border-l-2 border-pink-600 pl-4 py-2 transform hover:translate-x-2 transition-transform duration-300">
+                  <div className={`p-4 rounded-lg ${
+                    darkMode ? 'bg-gray-800' : 'bg-white'
+                  } border-l-2 border-pink-600 transform hover:translate-x-2 transition-transform duration-300`}>
                     <div>
                       <h4 className="text-lg font-semibold">Baccalauréat</h4>
                       <p className="text-pink-600">Lycée Municipal de Koumassi | 2021</p>
@@ -374,126 +491,132 @@ function App() {
         </div>
       </section>
 
-      {/* Skills Section with Floating Cards */}
-      <section id="skills" className={`py-20 relative overflow-hidden`}>
+      {/* Skills Section with Progress Bars */}
+      <section id="skills" className={`py-20 relative overflow-hidden ${
+        darkMode ? '' : 'bg-gray-50'
+      }`}>
         <div className="absolute inset-0 pointer-events-none opacity-10">
-          <div className="absolute top-1/4 left-1/4 text-8xl font-bold text-pink-600 opacity-5">&lt;/&gt;</div>
-          <div className="absolute bottom-1/4 right-1/4 text-8xl font-bold text-pink-600 opacity-5">{ }</div>
+          <div className="absolute top-1/4 left-1/4 text-8xl font-bold text-pink-600 opacity-5">
+            HTML
+          </div>
+          <div className="absolute bottom-1/4 right-1/4 text-8xl font-bold text-purple-600 opacity-5">
+            CSS
+          </div>
+          <div className="absolute top-3/4 left-1/3 text-8xl font-bold text-blue-600 opacity-5">
+            JS
+          </div>
         </div>
-        
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+      
+        <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
-            <span className="text-pink-600">#</span> {t.skills}
+            <span className="text-pink-600">#</span> {isEnglish ? "My Skills" : "Mes Compétences"}
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
-          <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">{isEnglish ? "Technologies and skills I work with" : "Technologies et compétences avec lesquelles je travaille"}</p>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            {[
-              { name: 'JavaScript' },
-              { name: 'HTML/CSS' },
-              { name: 'React.js' },
-              { name: 'Vue.js' },
-              { name: 'Wordpress' },
-              { name: 'PHP' },
-              { name: 'Bootstrap' },
-              { name: 'Tailwind CSS' },
-              { name: 'Figma' },
-              { name: 'API Integration' },
-              { name: 'Git' },
-              { name: 'SQL' }
-            ].map((skill, index) => (
-              <div
-                key={skill.name}
-                className={`animate-on-scroll group p-4 rounded-lg bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border-l-2 border-pink-600`}
+          <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
+            {isEnglish 
+              ? "These are the technologies and tools I work with on a daily basis"
+              : "Voici les technologies et outils avec lesquels je travaille au quotidien"
+            }
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+            {skills.map((skill, index) => (
+              <div 
+                key={skill.name} 
+                className="animate-on-scroll" 
                 data-animation="fadeInUp"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <p className="text-center font-semibold mb-2">{skill.name}</p>
-                
+                <div className="flex justify-between mb-1">
+                  <span className="font-medium">{skill.name}</span>
+                  <span>{skill.value}%</span>
+                </div>
+                <div className={`w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden`}>
+                  <div 
+                    className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                    style={{ width: `${skill.value}%`, animationDelay: `${index * 0.1}s` }}
+                  ></div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Projects Section with Hover Effects */}
-      <section id="projects" className={`py-20 bg-gray-800 relative z-10`}>
+      {/* Projects Section */}
+      <section id="projects" className={`py-20 relative ${
+        darkMode ? 'bg-gray-800' : 'bg-white'
+      }`}>
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
             <span className="text-pink-600">#</span> {t.projectsTitle}
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
-          <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">{isEnglish ? "Some of my recent work and projects" : "Quelques-uns de mes travaux et projets récents"}</p>
+          <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
+            {isEnglish 
+              ? "A showcase of my recent development projects and applications" 
+              : "Une présentation de mes projets et applications récents"
+            }
+          </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <div 
-                key={index}
-                className={`animate-on-scroll rounded-lg overflow-hidden shadow-lg bg-gray-700
-                 transform transition-all duration-500 hover:shadow-2xl`}
+                key={project.title}
+                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group ${
+                  darkMode ? 'bg-gray-700' : 'bg-white'
+                } animate-on-scroll`}
                 data-animation="fadeInUp"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="relative overflow-hidden group h-48">
+                <div className="relative overflow-hidden h-48">
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-600/90 to-purple-600/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="flex space-x-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                      <a 
-                        href={project.liveLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white rounded-full text-pink-600 hover:bg-pink-100 transition-colors duration-300 transform hover:scale-110"
-                      >
-                        <Eye className="h-6 w-6" />
-                      </a>
-                      <a 
-                        href={project.codeLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white rounded-full text-pink-600 hover:bg-pink-100 transition-colors duration-300 transform hover:scale-110"
-                      >
-                        <Github className="h-6 w-6" />
-                      </a>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                    <div className="p-4 w-full">
+                      <div className="flex flex-wrap gap-2 mb-2">
+                        {project.tags.map(tag => (
+                          <span 
+                            key={tag} 
+                            className="text-xs font-medium px-2 py-1 rounded-full bg-pink-600 text-white"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-600 transition-colors">{project.title}</h3>
-                  <p className="text-sm mb-4 opacity-90">{project.description}</p>
+                  <h3 className="text-lg font-bold mb-2">{project.title}</h3>
+                  <p className={`mb-6 text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {project.description}
+                  </p>
                   
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span 
-                        key={tagIndex} 
-                        className="px-2 py-1 text-xs rounded-md bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex justify-between mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+                  <div className="flex space-x-3">
                     <a 
                       href={project.liveLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-sm font-medium text-pink-600 hover:text-pink-700 flex items-center group"
+                      className="flex items-center text-sm font-medium px-3 py-2 rounded bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 transition-all duration-300"
                     >
-                      {t.viewProject} 
-                      <ExternalLink className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                      <Eye className="h-4 w-4 mr-2" />
+                      {t.viewProject}
                     </a>
                     <a 
                       href={project.codeLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-sm font-medium text-pink-600 hover:text-pink-700 flex items-center group"
+                      className={`flex items-center text-sm font-medium px-3 py-2 rounded border border-pink-600 ${
+                        darkMode ? 'text-pink-600 hover:bg-gray-600' : 'text-pink-600 hover:bg-pink-50'
+                      } transition-all duration-300`}
                     >
+                      <Github className="h-4 w-4 mr-2" />
                       {t.viewCode}
-                      <Github className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
                     </a>
                   </div>
                 </div>
@@ -502,61 +625,65 @@ function App() {
           </div>
         </div>
       </section>
-
-      {/* Experience with Improved Cards */}
-      <section id="Experience" className="py-20 relative z-10">
+      
+      {/* Experience Section */}
+      <section id="experience" className={`py-20 relative ${
+        darkMode ? '' : 'bg-gray-50'
+      }`}>
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
             <span className="text-pink-600">#</span> {t.Experience}
-          <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
+            <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
-            {isEnglish ? "Professional Experience and achievements" : "Experience professionnelles et réalisations"}
+            {isEnglish 
+              ? "My professional journey and certifications" 
+              : "Mon parcours professionnel et mes certifications"
+            }
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "JavaScript Certification",
-                issuer: "NAN DIGITAL ACADEMY",
-                date: "2023 - 2024",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUZvdOF-AVHqrOFiryfOCftGlTB6U_nhv4yw&s",
-                link: ""
-              },
-              {
-                title: "Developpement fullstack",
-                issuer: "WeCode",
-                date: "2023",
-                image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAulBMVEX///8AAAD///1ISEj7+/v///u6urr4+Pi9vb2lpaWNjY1+fn7b29utra3u7u4PDw9YWFjOzs7w8PCwsLCXl5fT09Pk5OQdHR2ioqKLi4tPT087OzsmJiZzc3PIyMhkZGQXFxdvb29AQEAuLi5PUP9YWPjb3fZUVf9KTP9eXvWamprs6/iFhfV8ffZ+fvG0su+Rkvmfn/Vxc/Pv8PlaW/hmZvhnafTZ2fjLzfS/wPVFRP+WlvGoq/KkpfQGfEhgAAAD+UlEQVR4nO3XaXfaOhCAYcssBhubfQ+EEieQ0GajNGl6+///1p2RbKBplnN625Db8z4fEqPYisYajYTnAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH+V6WQSHnoMVtDphIPsuhqGibuqhZ2w+/QD3bAxLkTl4LWOY2Pmv2mM/9GxMcbFFchV7Bonctl76u5awzj99iv9SoSF3znOX1eR4brRTuXq2DWaZyagYnail/t9PxG2ZnlckY7bZl9TLgZP3Nu1oY2iY/v75WX2fiL0PhhT1zQtnuiwK9o0zDO3lRT3b61L+8S+g6pcFH/qKlNMWnsRyqdn73wb0yyump2YiTYdGdOQ8MK+NHyobe+M93Kzsp1j/1F/NXll5uhi4CK0n/rDVwvTnxTUXVwdCUtG47lkjL1eP1tw5fzOuTEnj6ej5Pt+SfilrKGcPVW3EbazTydP1q23IoWzLu94JFM5NqZrYzU9DVzmQn/ksyiXnR8f9f3Vx0+fLoOr6+sbF3ttrxYV7II2fe1pfMhZ1DSdeonO39DWj7kmaeRqbDLfVoxevky3/NLqfLk8PSsF8uvWxjDSTE6KlZmNUH7Oaq5ydX76v2/ILq9Yw5Kh9O00tD3J0ShotYLmdhKT/YxVMoOnaXq6ljxdf14sN4Fv7xnq3/R1jDTdK9rJhUziIcuNTpfu/LEXSFb2pEaY1n62yQxb+egzfulMAjxf2cvV5zT9srb54JacrOlRe7+T1pvHtaPT1HQbhFS+6rHO5g8RZrkpg65vx5l4/t1putisslp6drpIN6tpvs/o6m7E7yVCXS5jt9ykEh7VNRk1yyZxVcTVQXZa1RNNI3tkYJreJl0s77MAff9KPn3pbmdcsnykDwxsH9LTQTeMoX3JWgsS9749WzLmunSCCxmaHwS6GxS07jeltae7XGd1ni6kzNgufJnDhWSsvJ6+LlvN/EIx30C78aFCy7jTmK0nWgvtKU7bjjqx7vpD7+syvZe2ZGZvnNs9RJathri4s3v+3SKVJC3pYUdOCdGJ2y103xkNqhJuvfLiCP604tjkxa663eMHu2VY2qTprbbVTnbrSrYSfy2Jmkqi+ncS6vlap7Oxu6PgvrlYs4Nu+S5N3XnMVhi3ZMp2zzf1qedfPjx8s23BMBtxw854aX27XD589e+X6XIju4Y0FSP3lMQ29tzpQYM9cIBeUi6XszHIVTNvrnSiC5tdwT9X+XZWrFxEYTurPbJAv998vzm7vPx4vc4PqL1qFEqpKpdtyWm1h9HgmW/T74gePp/+Q8nGpafTxydwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/D/8CxOQNZjcAUAYAAAAAElFTkSuQmCC",
-                link: ""
-              }
-            ].map((cert, index) => (
+          <div className="grid md:grid-cols-2 gap-10">
+            {experiences.map((exp, index) => (
               <div 
-                key={index}
-                className={`animate-on-scroll rounded-lg overflow-hidden bg-gray-700 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2`}
-                data-animation="fadeInUp"
+                key={exp.title}
+                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group ${
+                  darkMode ? 'bg-gray-700' : 'bg-white'
+                } animate-on-scroll`}
+                data-animation={index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}
               >
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative overflow-hidden h-48">
                   <img 
-                    src={cert.image} 
-                    alt={cert.title} 
-                    className="w-full h-full object-cover"
+                    src={exp.image} 
+                    alt={exp.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className={`absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm p-2`}>
-                    <p className="text-sm font-medium">{cert.issuer} | {cert.date}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
+                      <div className="flex items-center text-pink-400">
+                        <Briefcase className="h-4 w-4 mr-2" />
+                        <span>{exp.issuer}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-4">{cert.title}</h3>
+                <div className="p-6 flex justify-between items-center">
+                  <div className="flex items-center">
+                    <Calendar className={`h-5 w-5 mr-2 ${darkMode ? 'text-pink-500' : 'text-pink-600'}`} />
+                    <span>{exp.date}</span>
+                  </div>
+                  
                   <a 
-                    href={cert.link}
-                    target="_blank" 
+                    href={exp.link} 
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-600 to-pink-500 text-white rounded-lg hover:from-pink-700 hover:to-pink-600 transition-all duration-300"
+                    className={`flex items-center text-sm ${
+                      darkMode ? 'text-pink-500 hover:text-pink-400' : 'text-pink-600 hover:text-pink-700'
+                    } transition-colors duration-300`}
                   >
-                    <Certificate className="h-4 w-4 mr-2" />
-                    {isEnglish ? "View Certificate" : "Voir le certificat"}
+                    <span className="mr-1">{isEnglish ? "View certificate" : "Voir le certificat"}</span>
+                    <ExternalLink className="h-4 w-4" />
                   </a>
                 </div>
               </div>
@@ -565,125 +692,170 @@ function App() {
         </div>
       </section>
 
-      {/* Contact Section with Form */}
-      <section id="contact" className={`py-20 bg-gray-800 relative z-10`}>
+      {/* Contact Section */}
+      <section id="contact" className={`py-20 relative ${
+        darkMode ? 'bg-gray-800' : 'bg-white'
+      }`}>
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-400 opacity-20 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-72 h-72 bg-purple-400 opacity-20 rounded-full blur-3xl"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-center relative inline-block left-1/2 transform -translate-x-1/2">
             <span className="text-pink-600">#</span> {t.contact}
             <div className="h-1 w-1/2 bg-gradient-to-r from-pink-600 to-purple-600 mt-2 rounded-full mx-auto"></div>
           </h2>
           <p className="text-center mb-12 text-sm opacity-60 max-w-lg mx-auto">
-            {isEnglish ? "Get in touch with me" : "Contactez-moi"}
+            {isEnglish 
+              ? "Feel free to reach out to me for collaborations or questions" 
+              : "N'hésitez pas à me contacter pour des collaborations ou des questions"
+            }
           </p>
           
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-10">
             <div className="animate-on-scroll" data-animation="fadeInLeft">
-              <h3 className="text-2xl font-bold mb-6">
-                {isEnglish ? "Let's Talk" : "Discutons"}
-              </h3>
-              <p className="mb-8 opacity-90">
-                {isEnglish 
-                  ? "Feel free to reach out to me for collaborations, job opportunities, or just to say hello!"
-                  : "N'hésitez pas à me contacter pour des collaborations, des opportunités d'emploi, ou simplement pour dire bonjour !"}
-              </p>
-              
-              <div className="space-y-6">
-                <div className={`p-4 rounded-lg bg-gray-700 flex items-center transform transition-all duration-300 hover:translate-x-2`}>
-                  <div className="p-3 bg-pink-100 text-pink-600 rounded-full mr-4">
-                    <Mail className="h-6 w-6" />
+              <div className={`p-6 rounded-xl ${
+                darkMode ? 'bg-gray-700' : 'bg-gray-50'
+              } shadow-lg relative overflow-hidden`}>
+                <div className="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-pink-600 opacity-5"></div>
+                
+                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <Mail className="h-6 w-6 text-pink-600" />
+                  {isEnglish ? "Get in Touch" : "Contactez-moi"}
+                </h3>
+                
+                <div className="space-y-4 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                      <Mail className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm opacity-70">Email</h4>
+                      <a href="mailto:annemarie.agbonou@gmail.com" className="text-lg hover:text-pink-600 transition-colors">
+                        annemarie.agbonou@gmail.com
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm opacity-70">{isEnglish ? "Email" : "Email"}</p>
-                    <a href="mailto:annemarieagbonou@gmail.com" className="font-medium hover:text-pink-600 transition-colors">
-                      annemarieagbonou@gmail.com
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                      <Phone className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm opacity-70">{isEnglish ? "Phone" : "Téléphone"}</h4>
+                      <a href="tel:+22559123456" className="text-lg hover:text-pink-600 transition-colors">
+                        +225 59 12 34 56
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                      <MapPin className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm opacity-70">{isEnglish ? "Location" : "Localisation"}</h4>
+                      <p className="text-lg">Koumassi, Abidjan, Côte d'Ivoire</p>
+                    </div>
+                  </div>
+                  
+                  <div className="pt-6 flex gap-4">
+                    <a 
+                      href="https://github.com/AnneMarieWecode" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`p-3 rounded-full ${
+                        darkMode 
+                          ? 'bg-gray-600 hover:bg-pink-600 text-white' 
+                          : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
+                      } transition-all duration-300`}
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-6 w-6" />
+                    </a>
+                    <a 
+                      href="https://linkedin.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`p-3 rounded-full ${
+                        darkMode 
+                          ? 'bg-gray-600 hover:bg-pink-600 text-white' 
+                          : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
+                      } transition-all duration-300`}
+                      aria-label="LinkedIn"
+                    >
+                      <Mail className="h-6 w-6" />
                     </a>
                   </div>
-                </div>
-                
-                <div className={`p-4 rounded-lg bg-gray-700 flex items-center transform transition-all duration-300 hover:translate-x-2`}>
-                  <div className="p-3 bg-pink-100 text-pink-600 rounded-full mr-4">
-                    <Phone className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm opacity-70">{isEnglish ? "Phone" : "Téléphone"}</p>
-                    <a href="tel:+2250759548254" className="font-medium hover:text-pink-600 transition-colors">
-                      +225 01 72 31 79 83
-                    </a>
-                  </div>
-                </div>
-                
-                <div className={`p-4 rounded-lg bg-gray-700 flex items-center transform transition-all duration-300 hover:translate-x-2`}>
-                  <div className="p-3 bg-pink-100 text-pink-600 rounded-full mr-4">
-                    <MapPin className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm opacity-70">{isEnglish ? "Location" : "Localisation"}</p>
-                    <p className="font-medium">Koumassi Divo, Côte d'Ivoire</p>
-                  </div>
-                </div>
-                
-                <div className="flex space-x-4 mt-8">
-                  <a 
-                    href="https://github.com/ANNEMARIE05" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-pink-100 text-pink-600 rounded-full hover:bg-pink-200 transition-colors transform hover:scale-110"
-                  >
-                    <Github className="h-6 w-6" />
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/anne-marie-agbonou-ba31692a1/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-pink-100 text-pink-600 rounded-full hover:bg-pink-200 transition-colors transform hover:scale-110"
-                  >
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                  </a>
                 </div>
               </div>
             </div>
             
             <div className="animate-on-scroll" data-animation="fadeInRight">
-              <form className={`p-8 rounded-2xl shadow-xl bg-gray-700`}>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium mb-2" htmlFor="name">{t.name}</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    className={`w-full px-4 py-3 rounded-lg border bg-gray-800 border-gray-600 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-colors`}
-                    placeholder={isEnglish ? "Your name" : "Votre nom"}
-                  />
-                </div>
+              <form className={`p-6 rounded-xl ${
+                darkMode ? 'bg-gray-700' : 'bg-gray-50'
+              } shadow-lg`}>
+                <h3 className="text-2xl font-bold mb-6">
+                  {isEnglish ? "Send me a message" : "Envoyez-moi un message"}
+                </h3>
                 
-                <div className="mb-6">
-                  <label className="block text-sm font-medium mb-2" htmlFor="email">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    className={`w-full px-4 py-3 rounded-lg border bg-gray-800 border-gray-600 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-colors`}
-                    placeholder={isEnglish ? "Your email" : "Votre email"}
-                  />
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-1">
+                      {t.name}
+                    </label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      className={`w-full px-4 py-3 rounded-lg ${
+                        darkMode 
+                          ? 'bg-gray-800 focus:ring-2 focus:ring-pink-600 border-gray-700' 
+                          : 'bg-white focus:ring-2 focus:ring-pink-600 border-gray-300'
+                      } focus:outline-none transition-all duration-300 border`}
+                      placeholder={isEnglish ? "Your name" : "Votre nom"}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">
+                      Email
+                    </label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      className={`w-full px-4 py-3 rounded-lg ${
+                        darkMode 
+                          ? 'bg-gray-800 focus:ring-2 focus:ring-pink-600 border-gray-700' 
+                          : 'bg-white focus:ring-2 focus:ring-pink-600 border-gray-300'
+                      } focus:outline-none transition-all duration-300 border`}
+                      placeholder={isEnglish ? "Your email" : "Votre email"}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-1">
+                      {t.message}
+                    </label>
+                    <textarea 
+                      id="message" 
+                      rows="5" 
+                      className={`w-full px-4 py-3 rounded-lg ${
+                        darkMode 
+                          ? 'bg-gray-800 focus:ring-2 focus:ring-pink-600 border-gray-700' 
+                          : 'bg-white focus:ring-2 focus:ring-pink-600 border-gray-300'
+                      } focus:outline-none transition-all duration-300 border`}
+                      placeholder={isEnglish ? "Your message" : "Votre message"}
+                    ></textarea>
+                  </div>
+                  
+                  <button 
+                    type="submit"
+                    className="w-full py-3 px-6 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg flex justify-center items-center hover:from-pink-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    {t.sendMessage}
+                  </button>
                 </div>
-                
-                <div className="mb-6">
-                  <label className="block text-sm font-medium mb-2" htmlFor="message">{t.message}</label>
-                  <textarea 
-                    id="message" 
-                    rows="5" 
-                    className={`w-full px-4 py-3 rounded-lg border bg-gray-800 border-gray-600 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition-colors`}
-                    placeholder={isEnglish ? "Your message" : "Votre message"}
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit" 
-                  className="w-full py-3 bg-gradient-to-r from-pink-600 to-pink-500 text-white rounded-lg hover:from-pink-700 hover:to-pink-600 transition-all duration-300 transform hover:translate-y-1 hover:shadow-lg flex items-center justify-center"
-                >
-                  <Mail className="h-5 w-5 mr-2" />
-                  {t.sendMessage}
-                </button>
               </form>
             </div>
           </div>
@@ -691,53 +863,192 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className={`py-8 bg-gray-900`}>
+      <footer className={`py-8 ${
+        darkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'
+      }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <Code2 className="h-6 w-6 text-pink-600" />
-              <span className="ml-2 font-bold">Anne Marie</span>
+            <div className="mb-4 md:mb-0">
+              <div className="flex items-center">
+                <div className="h-10 w-10 rounded-lg overflow-hidden bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+                  <Code2 className="h-6 w-6 text-white" />
+                </div>
+                <span className="ml-3 text-xl font-extrabold tracking-tighter">
+                  Anne Marie
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 ml-1">.dev</span>
+                </span>
+              </div>
+              <p className="mt-2 text-sm opacity-70">{t.copyright}</p>
             </div>
             
-            <p className="text-sm opacity-70">
-              {t.copyright}
-            </p>
-            
-            <div className="flex space-x-4 mt-4 md:mt-0">
+            <div className="flex gap-4">
               <a 
-                href="https://github.com/ANNEMARIE05" 
-                target="_blank"
+                href="https://github.com/AnneMarieWecode" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="text-pink-600 hover:text-pink-700 transition-colors"
+                className={`p-2 rounded-full ${
+                  darkMode 
+                    ? 'bg-gray-800 hover:bg-pink-600 text-white' 
+                    : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
+                } transition-all duration-300`}
+                aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
               <a 
-                href="https://www.linkedin.com/in/anne-marie-agbonou-ba31692a1/" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-pink-600 hover:text-pink-700 transition-colors"
+                href="mailto:annemarie.agbonou@gmail.com" 
+                className={`p-2 rounded-full ${
+                  darkMode 
+                    ? 'bg-gray-800 hover:bg-pink-600 text-white' 
+                    : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
+                } transition-all duration-300`}
+                aria-label="Email"
               >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
+                <Mail className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`p-2 rounded-full ${
+                  darkMode 
+                    ? 'bg-gray-800 hover:bg-pink-600 text-white' 
+                    : 'bg-gray-200 hover:bg-pink-600 hover:text-white'
+                } transition-all duration-300`}
+                aria-label="LinkedIn"
+              >
+                <Phone className="h-5 w-5" />
               </a>
             </div>
           </div>
         </div>
       </footer>
-
-      {/* Scroll to Top Button */}
-      <button 
+      
+      {/* Scroll to top button */}
+      <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-8 right-8 p-3 rounded-full bg-pink-600 text-white shadow-lg transform transition-all duration-300 hover:scale-110 ${
+        className={`fixed bottom-6 right-6 p-3 rounded-full bg-pink-600 text-white shadow-lg transition-all duration-300 transform hover:scale-110 z-50 ${
           scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
+        aria-label="Scroll to top"
       >
-        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
+        <ArrowUp className="h-6 w-6" />
       </button>
+      
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes scroll-indicator {
+          0% { transform: translateY(0); opacity: 1; }
+          75% { transform: translateY(12px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 0; }
+        }
+        
+        @keyframes slide-up {
+          0% { transform: translateY(100%); }
+          100% { transform: translateY(0); }
+        }
+        
+        @keyframes gradient-x {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+          0% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(5deg); }
+          100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes spin-slow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        .animate-scroll-indicator {
+          animation: scroll-indicator 2s infinite;
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 0.5s ease-out;
+        }
+        
+        .animate-gradient-x {
+          background-size: 200% 200%;
+          animation: gradient-x 3s ease infinite;
+        }
+        
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-spin-slow {
+          animation: spin-slow 15s linear infinite;
+        }
+        
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.7s ease-out;
+        }
+        
+        .animate-on-scroll.appear {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        [data-animation="fadeInLeft"].appear {
+          animation: fadeInLeft 0.7s ease-out forwards;
+        }
+        
+        [data-animation="fadeInRight"].appear {
+          animation: fadeInRight 0.7s ease-out forwards;
+        }
+        
+        [data-animation="fadeInUp"].appear {
+          animation: fadeInUp 0.7s ease-out forwards;
+        }
+        
+        .bg-grid-pattern {
+          background-image: 
+            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+          background-size: 35px 35px;
+        }
+      `}</style>
     </div>
   );
 }
